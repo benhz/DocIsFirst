@@ -75,7 +75,7 @@ const config: Config = {
         id: 'projects',
         path: 'projects',
         routeBasePath: 'projects',
-        sidebarPath: './sidebars.ts',
+        sidebarPath: './sidebarsProjects.ts',
       },
     ],
   ],
