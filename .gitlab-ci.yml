@@ -1,0 +1,59 @@
+stages:
+  - install
+  - test
+  - build
+  - deploy
+
+image: node:20
+
+cache:
+  paths:
+    - node_modules/
+    - .yarn/cache/
+
+install:
+  stage: install
+  tags:
+    - Upward-always
+  script:
+    - yarn install --frozen-lockfile
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 day
+
+typecheck:
+  stage: test
+  tags:
+    - Upward-always
+  dependencies:
+    - install
+  script:
+    - yarn typecheck
+
+build:
+  stage: build
+  tags:
+    - Upward-always
+  dependencies:
+    - install
+  script:
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 7 days
+
+pages:
+  stage: deploy
+  tags:
+    - Upward-always
+  dependencies:
+    - build
+  script:
+    - mv build public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main        # 保留这一句也行，其实有 workflow 了已经够了
