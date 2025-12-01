@@ -1,24 +1,25 @@
 # GitLab CI/CD Configuration for Docusaurus Project
 
-# Define stages
 stages:
   - install
   - test
   - build
   - deploy
 
-# Use Node.js Docker image (matching the required version)
+# 用 Node.js 20 的镜像
 image: node:20
 
-# Cache node_modules to speed up builds
+# 缓存依赖
 cache:
   paths:
     - node_modules/
     - .yarn/cache/
 
-# Install dependencies
+# 安装依赖
 install:
   stage: install
+  tags:
+    - Upward-always
   script:
     - yarn install --frozen-lockfile
   artifacts:
@@ -30,9 +31,11 @@ install:
     - tags
     - merge_requests
 
-# Type checking
+# 类型检查
 typecheck:
   stage: test
+  tags:
+    - Upward-always
   dependencies:
     - install
   script:
@@ -42,9 +45,11 @@ typecheck:
     - tags
     - merge_requests
 
-# Build the Docusaurus site
+# 构建 Docusaurus
 build:
   stage: build
+  tags:
+    - Upward-always
   dependencies:
     - install
   script:
@@ -58,9 +63,11 @@ build:
     - tags
     - merge_requests
 
-# Deploy to GitLab Pages (only on main/master branch)
+# 部署到 GitLab Pages（只在 main/master）
 pages:
   stage: deploy
+  tags:
+    - Upward-always
   dependencies:
     - build
   script:
@@ -72,9 +79,11 @@ pages:
     - main
     - master
 
-# Optional: Preview deployments for merge requests
+# MR 预览
 preview:
   stage: deploy
+  tags:
+    - Upward-always
   dependencies:
     - build
   script:
