@@ -26,10 +26,11 @@ install:
     paths:
       - node_modules/
     expire_in: 1 day
-  only:
-    - branches
-    - tags
-    - merge_requests
+  rules:
+    # 直接在 main 上的提交
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    # 目标是 main 的 MR
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
 
 # 类型检查
 typecheck:
@@ -40,10 +41,9 @@ typecheck:
     - install
   script:
     - yarn typecheck
-  only:
-    - branches
-    - tags
-    - merge_requests
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
 
 # 构建 Docusaurus
 build:
@@ -58,12 +58,11 @@ build:
     paths:
       - build/
     expire_in: 7 days
-  only:
-    - branches
-    - tags
-    - merge_requests
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
 
-# 部署到 GitLab Pages（只在 main/master）
+# 部署到 GitLab Pages（只在 main 上真正部署）
 pages:
   stage: deploy
   tags:
@@ -75,11 +74,11 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    - main
-    - master
+  rules:
+    # 只在 main 分支的 commit 上跑（包括 merge 进去的）
+    - if: '$CI_COMMIT_BRANCH == "main"'
 
-# MR 预览
+# MR 预览（只有目标是 main 的 MR 才跑）
 preview:
   stage: deploy
   tags:
@@ -92,8 +91,5 @@ preview:
     paths:
       - build/
     expire_in: 7 days
-  only:
-    - merge_requests
-  except:
-    - main
-    - master
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
