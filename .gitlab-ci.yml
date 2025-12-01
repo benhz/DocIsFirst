@@ -1,21 +1,16 @@
-# GitLab CI/CD Configuration for Docusaurus Project
-
 stages:
   - install
   - test
   - build
   - deploy
 
-# 用 Node.js 20 的镜像
 image: node:20
 
-# 缓存依赖
 cache:
   paths:
     - node_modules/
     - .yarn/cache/
 
-# 安装依赖
 install:
   stage: install
   tags:
@@ -26,13 +21,7 @@ install:
     paths:
       - node_modules/
     expire_in: 1 day
-  rules:
-    # 直接在 main 上的提交
-    - if: '$CI_COMMIT_BRANCH == "main"'
-    # 目标是 main 的 MR
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
 
-# 类型检查
 typecheck:
   stage: test
   tags:
@@ -41,11 +30,7 @@ typecheck:
     - install
   script:
     - yarn typecheck
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
 
-# 构建 Docusaurus
 build:
   stage: build
   tags:
@@ -58,11 +43,7 @@ build:
     paths:
       - build/
     expire_in: 7 days
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
 
-# 部署到 GitLab Pages（只在 main 上真正部署）
 pages:
   stage: deploy
   tags:
@@ -74,22 +55,5 @@ pages:
   artifacts:
     paths:
       - public
-  rules:
-    # 只在 main 分支的 commit 上跑（包括 merge 进去的）
-    - if: '$CI_COMMIT_BRANCH == "main"'
-
-# MR 预览（只有目标是 main 的 MR 才跑）
-preview:
-  stage: deploy
-  tags:
-    - Upward-always
-  dependencies:
-    - build
-  script:
-    - echo "Preview available at https://$CI_PROJECT_NAME.pages.dev/$CI_COMMIT_REF_SLUG"
-  artifacts:
-    paths:
-      - build/
-    expire_in: 7 days
-  rules:
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+  only:
+    - main        # 保留这一句也行，其实有 workflow 了已经够了
