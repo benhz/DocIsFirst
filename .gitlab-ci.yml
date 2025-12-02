@@ -2,16 +2,24 @@
 workflow:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
-      when: always     # main 上的提交：允许跑
-    - when: never      # 其它分支 / MR：一律不跑
+      when: always
+    - when: never
 
 stages:
   - install
   - test
   - build
+  - docker
   - deploy
 
+# 用你内网的 Node 镜像
 image: tool-1:5000/library/node:24.11.1
+
+# 镜像相关变量
+variables:
+  IMAGE_REGISTRY: "tool-1:5000"
+  IMAGE_NAME: "library/docusaurus-docs"
+  IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
 
 cache:
   paths:
@@ -51,16 +59,37 @@ build:
       - build/
     expire_in: 7 days
 
-pages:
-  stage: deploy
+# 用 Docker in Docker 构建并推到内网 registry
+docker_build:
+  stage: docker
   tags:
     - Upward-always
+  image: docker:24.0.2
+  services:
+    - name: docker:24.0.2-dind
+      command: ["--insecure-registry=tool-1:5000"]
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
   dependencies:
     - build
   script:
-    - mv build public
-  artifacts:
-    paths:
-      - public
+    # 这里直接用 Dockerfile 构建
+    - docker build -t ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} .
+    - docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
   only:
-    - main     # 可以留着，当双保险
+    - main
+
+# 在 k3s 里滚动更新 deployment
+deploy_k8s:
+  stage: deploy
+  tags:
+    - Upward-always
+  image: bitnami/kubectl:latest
+  dependencies:
+    - docker_build
+  script:
+    # 用 CI 的 IMAGE_TAG 替换 YAML 里的占位符，然后 apply
+    - sed "s/\${IMAGE_TAG}/${IMAGE_TAG}/g" k8s/platform-docs.yaml | kubectl apply -f -
+  only:
+    - main
