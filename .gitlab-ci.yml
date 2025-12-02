@@ -69,7 +69,7 @@ docker_build:
     - name: tool-1:5000/library/docker:26.1.4-dind
       command: ["--insecure-registry=tool-1:5000"]
   variables:
-    DOCKER_HOST: tcp://docker:2375
+    DOCKER_HOST: tcp://svc-0:2375
     DOCKER_TLS_CERTDIR: ""
   dependencies:
     - build
