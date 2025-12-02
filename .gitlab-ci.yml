@@ -80,12 +80,13 @@ docker_build:
   dependencies:
     - build
   script:
+    - echo "用 Kaniko 构建并推送镜像: ${IMAGE}"
     - >
       /kaniko/executor
       --context=.
       --dockerfile=Dockerfile
       --destination=${IMAGE}
-      --insecure-registry=tool-1:5000
+      --skip-tls-verify-registry=tool-1:5000
   only:
     - main
 
