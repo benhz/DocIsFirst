@@ -14,7 +14,7 @@ COPY . .
 RUN yarn build
 
 # 第二步：用 nginx 提供静态资源服务
-FROM ool-1:5000/library/nginx:alpine
+FROM tool-1:5000/library/nginx:alpine
 
 # 把 build 出来的静态站点拷到 nginx 目录
 COPY --from=builder /app/build /usr/share/nginx/html
