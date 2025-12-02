@@ -81,15 +81,9 @@ docker_build:
     - build
   script:
     - echo "用 Kaniko 构建并推送镜像: ${IMAGE}"
-    - >
-      /kaniko/executor
-      --context=.
-      --dockerfile=Dockerfile
-      --destination=${IMAGE}
-      --skip-tls-verify-registry=tool-1:5000
+    - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=${IMAGE} --skip-tls-verify-registry=tool-1:5000
   only:
     - main
-
 
 # ==================== 部署到 K3s ====================
 deploy_k8s:
