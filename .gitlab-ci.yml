@@ -83,9 +83,11 @@ docker_build:
   script:
     - echo "build and push image ${IMAGE}"
     - mkdir -p /kaniko/.docker
+    # 用 CI 变量里的 admin 账号生成 Harbor 登录信息
     - AUTH=$(printf "%s:%s" "$HARBOR_USER" "$HARBOR_PASSWORD" | base64 | tr -d '\n')
     - echo "{\"auths\":{\"tool-1:5000\":{\"auth\":\"$AUTH\"}}}" > /kaniko/.docker/config.json
-    - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=${IMAGE} --skip-tls-verify-registry=tool-1:5000 --docker-config=/kaniko/.docker
+    # 这里注意：不要再加 --docker-config
+    - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=${IMAGE} --skip-tls-verify-registry=tool-1:5000
   only:
     - main
 
