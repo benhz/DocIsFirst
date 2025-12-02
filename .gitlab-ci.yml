@@ -64,9 +64,9 @@ docker_build:
   stage: docker
   tags:
     - Upward-always
-  image: docker:24.0.2
+  image: tool-1:5000/library/docker:26.1.4
   services:
-    - name: docker:24.0.2-dind
+    - name: tool-1:5000/library/docker:26.1.4-dind
       command: ["--insecure-registry=tool-1:5000"]
   variables:
     DOCKER_HOST: tcp://docker:2375
