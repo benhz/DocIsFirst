@@ -1,10 +1,17 @@
+# 只在 main 分支触发整个流水线
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: always     # main 上的提交：允许跑
+    - when: never      # 其它分支 / MR：一律不跑
+
 stages:
   - install
   - test
   - build
   - deploy
 
-image: node:20
+image: tool-1:5000/library/node:24.11.1
 
 cache:
   paths:
@@ -56,4 +63,4 @@ pages:
     paths:
       - public
   only:
-    - main        # 保留这一句也行，其实有 workflow 了已经够了
+    - main     # 可以留着，当双保险
