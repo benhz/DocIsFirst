@@ -12,7 +12,7 @@ stages:
   - docker
   - deploy
 
-# 用你内网的 Node 镜像
+# 默认使用内网的 Node 镜像
 image: tool-1:5000/library/node:24.11.1
 
 # 镜像相关变量
@@ -21,22 +21,27 @@ variables:
   IMAGE_NAME: "library/docusaurus-docs"
   IMAGE_TAG: "$CI_COMMIT_SHORT_SHA"
 
+# 缓存 node_modules 和 yarn 缓存
 cache:
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
     - .yarn/cache/
 
+# ==================== 安装依赖 ====================
 install:
   stage: install
   tags:
     - Upward-always
   script:
+    - echo "安装依赖..."
     - yarn install --frozen-lockfile
   artifacts:
     paths:
       - node_modules/
     expire_in: 1 day
 
+# ==================== 类型检查 ====================
 typecheck:
   stage: test
   tags:
@@ -44,8 +49,10 @@ typecheck:
   dependencies:
     - install
   script:
+    - echo "执行类型检查..."
     - yarn typecheck
 
+# ==================== 构建项目 ====================
 build:
   stage: build
   tags:
@@ -53,13 +60,14 @@ build:
   dependencies:
     - install
   script:
+    - echo "构建项目..."
     - yarn build
   artifacts:
     paths:
       - build/
     expire_in: 7 days
 
-# 用 Docker in Docker 构建并推到内网 registry
+# ==================== Docker 构建和推送 ====================
 docker_build:
   stage: docker
   tags:
@@ -69,18 +77,44 @@ docker_build:
     - name: tool-1:5000/library/docker:26.1.4-dind
       command: ["--insecure-registry=tool-1:5000"]
   variables:
-    DOCKER_HOST: tcp://svc-0:2375
+    DOCKER_HOST: tcp://localhost:2375
     DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay2
   dependencies:
     - build
   script:
-    # 这里直接用 Dockerfile 构建
+    # 等待 Docker daemon 启动
+    - echo "等待 Docker daemon 启动..."
+    - |
+      for i in $(seq 1 30); do
+        if docker info >/dev/null 2>&1; then
+          echo "✓ Docker daemon 已就绪"
+          break
+        fi
+        echo "等待中... ($i/30)"
+        sleep 2
+      done
+    
+    # 验证 Docker 连接
+    - docker info
+    
+    # 构建镜像
+    - echo "构建 Docker 镜像: ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
     - docker build -t ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} .
+    
+    # 推送镜像
+    - echo "推送镜像到内网 registry..."
     - docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
+    
+    # 同时打上 latest 标签
+    - docker tag ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_REGISTRY}/${IMAGE_NAME}:latest
+    - docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:latest
+    
+    - echo "✓ 镜像构建和推送完成"
   only:
     - main
 
-# 在 k3s 里滚动更新 deployment
+# ==================== 部署到 K3s ====================
 deploy_k8s:
   stage: deploy
   tags:
@@ -89,7 +123,17 @@ deploy_k8s:
   dependencies:
     - docker_build
   script:
-    # 用 CI 的 IMAGE_TAG 替换 YAML 里的占位符，然后 apply
+    - echo "部署到 K3s 集群..."
+    
+    # 检查 kubectl 配置
+    - kubectl version --client
+    
+    # 替换 IMAGE_TAG 并应用配置
     - sed "s/\${IMAGE_TAG}/${IMAGE_TAG}/g" k8s/platform-docs.yaml | kubectl apply -f -
+    
+    # 等待部署完成
+    - kubectl rollout status deployment/platform-docs -n default --timeout=5m
+    
+    - echo "✓ 部署完成"
   only:
     - main
