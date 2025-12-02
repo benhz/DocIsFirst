@@ -34,7 +34,7 @@ install:
   tags:
     - Upward-always
   script:
-    - echo "安装依赖..."
+    - echo "install dependencies"
     - yarn install --frozen-lockfile
   artifacts:
     paths:
@@ -49,28 +49,25 @@ typecheck:
   dependencies:
     - install
   script:
-    - echo "执行类型检查..."
+    - echo "run typecheck"
     - yarn typecheck
 
 # ==================== 构建项目 ====================
-docker_build:
-  stage: docker
+build:
+  stage: build
   tags:
     - Upward-always
-  image:
-    name: tool-1:5000/gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  variables:
-    IMAGE: "${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
   dependencies:
-    - build
+    - install
   script:
-    - 'echo "用 Kaniko 构建并推送镜像: ${IMAGE}"'
-    - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=${IMAGE} --skip-tls-verify-registry=tool-1:5000
-  only:
-    - main
+    - echo "build project"
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+    expire_in: 7 days
 
-# ==================== Docker 构建和推送 ====================
+# ==================== Docker 构建和推送（Kaniko） ====================
 docker_build:
   stage: docker
   tags:
@@ -83,7 +80,7 @@ docker_build:
   dependencies:
     - build
   script:
-    - echo "用 Kaniko 构建并推送镜像: ${IMAGE}"
+    - echo "build and push image ${IMAGE}"
     - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=${IMAGE} --skip-tls-verify-registry=tool-1:5000
   only:
     - main
@@ -97,10 +94,10 @@ deploy_k8s:
   dependencies:
     - docker_build
   script:
-    - echo "部署到 K3s 集群..."
+    - echo "deploy to k3s"
     - kubectl version --client
     - sed "s/\${IMAGE_TAG}/${IMAGE_TAG}/g" k8s/platform-docs.yaml | kubectl apply -f -
-    - kubectl rollout status deployment/platform-docs -n default --timeout=5m
-    - echo "✓ 部署完成"
+    - kubectl rollout status deployment/docusaurus -n platform-docs --timeout=5m
+    - echo "deploy done"
   only:
     - main
