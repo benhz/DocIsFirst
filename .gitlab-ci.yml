@@ -72,30 +72,23 @@ docker_build:
   stage: docker
   tags:
     - Upward-always
-  image: tool-1:5000/library/docker:26.1.4
-  services:
-    - name: tool-1:5000/library/docker:26.1.4-dind
-      command: ["--insecure-registry=tool-1:5000"]
+  image:
+    name: tool-1:5000/library/kaniko-executor:latest
+    entrypoint: [""]
   variables:
-    DOCKER_HOST: tcp://localhost:2375
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: overlay2
+    IMAGE: "${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
   dependencies:
     - build
   script:
-    - echo "等待 Docker daemon 启动..."
-    - for i in $(seq 1 30); do docker info >/dev/null 2>&1 && break || echo "等待中... ($i/30)"; sleep 2; done
-    - echo "✓ Docker daemon 已就绪"
-    - docker info
-    - echo "构建 Docker 镜像 ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
-    - docker build -t ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} .
-    - echo "推送镜像到内网 registry..."
-    - docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
-    - docker tag ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_REGISTRY}/${IMAGE_NAME}:latest
-    - docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:latest
-    - echo "✓ 镜像构建和推送完成"
+    - >
+      /kaniko/executor
+      --context=.
+      --dockerfile=Dockerfile
+      --destination=${IMAGE}
+      --insecure-registry=tool-1:5000
   only:
     - main
+
 
 # ==================== 部署到 K3s ====================
 deploy_k8s:
