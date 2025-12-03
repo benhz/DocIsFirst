@@ -115,42 +115,6 @@ export default function HomepageFeatures(): ReactNode {
             <Module key={idx} {...props} />
           ))}
         </div>
-
-        <div className="text--center" style={{marginTop: '3rem'}}>
-          <div style={{
-            background: 'var(--ifm-color-emphasis-100)',
-            padding: '2rem',
-            borderRadius: '8px',
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}>
-            <Heading as="h3">🎯 快速导航</Heading>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '1rem',
-              marginTop: '1.5rem',
-              textAlign: 'left'
-            }}>
-              <div>
-                <strong>新人入职？</strong><br />
-                <Link to="/docs/org/onboarding">→ 入职指南</Link>
-              </div>
-              <div>
-                <strong>要调用 API？</strong><br />
-                <Link to="/docs/api/overview">→ API 文档</Link>
-              </div>
-              <div>
-                <strong>遇到故障？</strong><br />
-                <Link to="/docs/operations/runbook">→ 故障手册</Link>
-              </div>
-              <div>
-                <strong>要发布上线？</strong><br />
-                <Link to="/docs/org/release-process">→ 发布流程</Link>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
