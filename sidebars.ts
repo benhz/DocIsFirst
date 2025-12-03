@@ -4,6 +4,7 @@ const sidebars: SidebarsConfig = {
   // 文档首页的侧边栏
   introSidebar: [
     'intro',
+    'contributing',
   ],
 
   // 产品中心的侧边栏（只显示产品相关内容）
