@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docusaurus
+  namespace: platform-docs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docusaurus
+  template:
+    metadata:
+      labels:
+        app: docusaurus
+    spec:
+      containers:
+        - name: docusaurus
+          image: tool-1:5000/library/docusaurus-docs:${IMAGE_TAG}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
