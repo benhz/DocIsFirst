@@ -322,7 +322,7 @@ function Button({label, onClick}) {
 
 需要使用 MDX 格式（`.mdx` 文件）：
 
-```mdx
+```jsx
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
