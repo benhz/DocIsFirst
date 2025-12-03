@@ -103,7 +103,7 @@ deploy_k8s:
     - echo "deploy to k3s"
     - kubectl version --client
     # 1. namespace（已经有也没事，多 apply 一次是幂等的）
-    - kubectl apply -f k8s/00-namespace.yaml || true
+    # - kubectl apply -f k8s/00-namespace.yaml || true
     # 2. deployment：用当前 IMAGE_TAG 替换占位符再 apply
     - sed "s/\${IMAGE_TAG}/${IMAGE_TAG}/g" k8s/30-deployment.yaml | kubectl apply -f -
     # 3. service：直接 apply
