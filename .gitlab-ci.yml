@@ -34,7 +34,7 @@ install:
   tags:
     - Upward-always
   script:
-    - echo "安装依赖..."
+    - echo "install dependencies"
     - yarn install --frozen-lockfile
   artifacts:
     paths:
@@ -49,7 +49,7 @@ typecheck:
   dependencies:
     - install
   script:
-    - echo "执行类型检查..."
+    - echo "run typecheck"
     - yarn typecheck
 
 # ==================== 构建项目 ====================
@@ -60,57 +60,34 @@ build:
   dependencies:
     - install
   script:
-    - echo "构建项目..."
+    - echo "build project"
     - yarn build
   artifacts:
     paths:
       - build/
     expire_in: 7 days
 
-# ==================== Docker 构建和推送 ====================
+# ==================== Docker 构建和推送（Kaniko） ====================
 docker_build:
   stage: docker
   tags:
     - Upward-always
-  image: tool-1:5000/library/docker:26.1.4
-  services:
-    - name: tool-1:5000/library/docker:26.1.4-dind
-      command: ["--insecure-registry=tool-1:5000"]
+  image:
+    name: tool-1:5000/gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
   variables:
-    DOCKER_HOST: tcp://localhost:2375
-    DOCKER_TLS_CERTDIR: ""
-    DOCKER_DRIVER: overlay2
+    IMAGE: "${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
+    DOCKER_CONFIG: "/kaniko/.docker"
   dependencies:
     - build
   script:
-    # 等待 Docker daemon 启动
-    - echo "等待 Docker daemon 启动..."
-    - |
-      for i in $(seq 1 30); do
-        if docker info >/dev/null 2>&1; then
-          echo "✓ Docker daemon 已就绪"
-          break
-        fi
-        echo "等待中... ($i/30)"
-        sleep 2
-      done
-    
-    # 验证 Docker 连接
-    - docker info
-    
-    # 构建镜像
-    - echo "构建 Docker 镜像: ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
-    - docker build -t ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} .
-    
-    # 推送镜像
-    - echo "推送镜像到内网 registry..."
-    - docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
-    
-    # 同时打上 latest 标签
-    - docker tag ${IMAGE_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_REGISTRY}/${IMAGE_NAME}:latest
-    - docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:latest
-    
-    - echo "✓ 镜像构建和推送完成"
+    - echo "build and push image ${IMAGE}"
+    - mkdir -p /kaniko/.docker
+    # 用 CI 变量里的 admin 账号生成 Harbor 登录信息
+    - AUTH=$(printf "%s:%s" "$HARBOR_USER" "$HARBOR_PASSWORD" | base64 | tr -d '\n')
+    - echo "{\"auths\":{\"tool-1:5000\":{\"auth\":\"$AUTH\"}}}" > /kaniko/.docker/config.json
+    # 这里注意：不要再加 --docker-config
+    - /kaniko/executor --context=. --dockerfile=Dockerfile --destination=${IMAGE} --skip-tls-verify-registry=tool-1:5000
   only:
     - main
 
@@ -123,17 +100,10 @@ deploy_k8s:
   dependencies:
     - docker_build
   script:
-    - echo "部署到 K3s 集群..."
-    
-    # 检查 kubectl 配置
+    - echo "deploy to k3s"
     - kubectl version --client
-    
-    # 替换 IMAGE_TAG 并应用配置
     - sed "s/\${IMAGE_TAG}/${IMAGE_TAG}/g" k8s/platform-docs.yaml | kubectl apply -f -
-    
-    # 等待部署完成
-    - kubectl rollout status deployment/platform-docs -n default --timeout=5m
-    
-    - echo "✓ 部署完成"
+    - kubectl rollout status deployment/docusaurus -n platform-docs --timeout=5m
+    - echo "deploy done"
   only:
     - main
