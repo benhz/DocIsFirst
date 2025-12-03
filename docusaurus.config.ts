@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Qicat',
-  tagline: '探索技术的无限可能',
+  title: '开发者中心',
+  tagline: '产品、平台、开发、运维、API、组织全方位文档',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -68,17 +68,8 @@ const config: Config = {
     ],
   ],
 
-  plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'projects',
-        path: 'projects',
-        routeBasePath: 'projects',
-        sidebarPath: './sidebarsProjects.ts',
-      },
-    ],
-  ],
+  // 移除 projects 插件，因为我们已经把项目文档整合到主文档中
+  plugins: [],
 
   themeConfig: {
     // Replace with your project's social card
@@ -87,30 +78,59 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Qicat',
+      title: '开发者中心',
       logo: {
-        alt: 'Qicat Logo',
+        alt: 'Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          type: 'doc',
+          docId: 'intro',
           position: 'left',
-          label: '教程',
+          label: '文档首页',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'projectsSidebar',
+          type: 'doc',
+          docId: 'product/index',
           position: 'left',
-          label: '项目',
-          docsPluginId: 'projects',
+          label: '产品中心',
         },
-        {to: '/blog', label: '博客', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
+          type: 'doc',
+          docId: 'platform/overview',
+          position: 'left',
+          label: '平台能力',
+        },
+        {
+          type: 'doc',
+          docId: 'development/overview',
+          position: 'left',
+          label: '开发架构',
+        },
+        {
+          type: 'doc',
+          docId: 'operations/overview',
+          position: 'left',
+          label: '运维SRE',
+        },
+        {
+          type: 'doc',
+          docId: 'api/overview',
+          position: 'left',
+          label: 'API',
+        },
+        {
+          type: 'doc',
+          docId: 'org/overview',
+          position: 'left',
+          label: '组织流程',
+        },
+        {
+          type: 'doc',
+          docId: 'projects/index',
+          position: 'left',
+          label: '项目手册',
         },
       ],
     },
