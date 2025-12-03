@@ -1,54 +1,101 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
-type FeatureItem = {
+type ModuleItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: string;
+  color: string;
   description: ReactNode;
+  link: string;
 };
 
-const FeatureList: FeatureItem[] = [
+const ModuleList: ModuleItem[] = [
   {
-    title: '简单易用',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: '产品中心',
+    icon: '🟦',
+    color: '#4285f4',
     description: (
       <>
-        从零开始设计，易于安装和使用，让您的网站快速上线运行。
+        了解我们的产品线、功能特性、使用场景和常见问题，快速上手产品使用。
       </>
     ),
+    link: '/docs/product/',
   },
   {
-    title: '专注内容',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: '平台与通用能力',
+    icon: '🟧',
+    color: '#ea4335',
     description: (
       <>
-        让您专注于内容创作，我们来处理繁琐的事务。只需将文档放入 <code>docs</code> 目录即可。
+        跨产品的统一能力：账号认证、权限管理、消息通知、计费支付和集成方案。
       </>
     ),
+    link: '/docs/platform/overview',
   },
   {
-    title: 'React 驱动',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: '开发与架构',
+    icon: '🟥',
+    color: '#fbbc04',
     description: (
       <>
-        通过 React 扩展或自定义您的网站布局。可以重用相同的页眉和页脚进行扩展。
+        系统架构设计、服务划分、开发规范、代码评审和本地环境搭建指南。
       </>
     ),
+    link: '/docs/development/overview',
+  },
+  {
+    title: '运维与 SRE',
+    icon: '🟩',
+    color: '#34a853',
+    description: (
+      <>
+        环境说明、部署流程、CI/CD、监控告警、故障处理和 SLA 制度。
+      </>
+    ),
+    link: '/docs/operations/overview',
+  },
+  {
+    title: 'API 与集成',
+    icon: '🟨',
+    color: '#9c27b0',
+    description: (
+      <>
+        REST API 文档、多语言 SDK、Webhook 事件推送和第三方集成指南。
+      </>
+    ),
+    link: '/docs/api/overview',
+  },
+  {
+    title: '组织与流程',
+    icon: '🟪',
+    color: '#ff6d00',
+    description: (
+      <>
+        研发组织架构、开发生命周期、发布流程、故障复盘和新人入职指南。
+      </>
+    ),
+    link: '/docs/org/overview',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Module({title, icon, color, description, link}: ModuleItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+    <div className={clsx('col col--4')} style={{marginBottom: '2rem'}}>
+      <Link to={link} className={styles.moduleCard}>
+        <div className={styles.moduleHeader} style={{borderLeftColor: color}}>
+          <span className={styles.moduleIcon}>{icon}</span>
+          <Heading as="h3" className={styles.moduleTitle}>{title}</Heading>
+        </div>
+        <div className={styles.moduleDescription}>
+          <p>{description}</p>
+        </div>
+        <div className={styles.moduleFooter}>
+          <span className={styles.moduleLink}>查看详情 →</span>
+        </div>
+      </Link>
     </div>
   );
 }
@@ -57,9 +104,15 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className="text--center" style={{marginBottom: '3rem'}}>
+          <Heading as="h2">探索文档体系</Heading>
+          <p style={{fontSize: '1.1rem', color: 'var(--ifm-color-emphasis-700)'}}>
+            选择你感兴趣的领域，快速找到需要的内容
+          </p>
+        </div>
         <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+          {ModuleList.map((props, idx) => (
+            <Module key={idx} {...props} />
           ))}
         </div>
       </div>
