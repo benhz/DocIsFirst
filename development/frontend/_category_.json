@@ -1,0 +1,8 @@
+{
+  "label": "前端开发",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "前端开发技术文档，包括 React、组件开发、样式设计等内容。"
+  }
+}

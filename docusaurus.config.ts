@@ -78,6 +78,15 @@ const config: Config = {
         sidebarPath: './sidebarsProjects.ts',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'development',
+        path: 'development',
+        routeBasePath: 'development',
+        sidebarPath: './sidebarsDevelopment.ts',
+      },
+    ],
   ],
 
   themeConfig: {
@@ -107,6 +116,13 @@ const config: Config = {
           docsPluginId: 'projects',
         },
         {to: '/blog', label: '博客', position: 'left'},
+        {
+          type: 'docSidebar',
+          sidebarId: 'developmentSidebar',
+          position: 'left',
+          label: '开发',
+          docsPluginId: 'development',
+        },
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',

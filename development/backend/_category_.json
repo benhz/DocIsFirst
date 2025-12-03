@@ -1,0 +1,8 @@
+{
+  "label": "后端开发",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "后端开发技术文档，包括 Node.js、数据库、微服务等相关内容。"
+  }
+}
