@@ -322,40 +322,448 @@ const hello = 'world';
 
 ---
 
-## 🤝 贡献指南
+## 🔐 权限说明
 
-欢迎所有同学贡献文档！
+### 维护者
+- **维护者**：muqiao
+- **权限**：合并到 `main` 分支、管理仓库、审核 PR
 
-### 贡献流程
+### 开发者
+- **所有开发者**：可以创建分支、提交代码、创建 Merge Request
+- **限制**：不能直接推送到 `main` 分支
 
-1. **Fork 项目或创建新分支**
+---
+
+## 🤝 Git 工作流
+
+### GitLab 仓库信息
+- **仓库地址**：http://116.178.69.6:30590/daydayup/project_doc.git
+- **主分支**：`main`
+- **开发分支命名规范**：
+  - 新功能：`feature/功能描述`
+  - Bug 修复：`fix/问题描述`
+  - 文档更新：`docs/文档描述`
+
+---
+
+## 📝 开发者贡献流程
+
+### 方式一：通过 GitLab Web 界面（推荐）
+
+这是最简单的方式，适合小改动：
+
+**步骤 1：在线编辑**
+1. 在文档页面点击右上角"编辑此页"
+2. 会跳转到 GitLab 编辑界面
+3. 直接在线修改文档
+
+**步骤 2：创建 Merge Request**
+1. 编辑完成后，页面下方会提示创建新分支
+2. 填写分支名称（如 `docs/update-xxx`）
+3. 勾选 "Start a new merge request with these changes"
+4. 点击 "Commit changes"
+
+**步骤 3：填写 MR 信息**
+1. 填写 MR 标题（简洁描述改动）
+2. 填写 MR 描述（详细说明改动内容）
+3. 设置 Assignee 为 `muqiao`（审核人）
+4. 点击 "Create merge request"
+
+**步骤 4：等待审核**
+- muqiao 会收到通知并审核
+- 如有问题会在 MR 中评论
+- 审核通过后会合并到 `main` 分支
+
+---
+
+### 方式二：通过命令行（适合大改动）
+
+**步骤 1：克隆仓库**
+```bash
+git clone http://116.178.69.6:30590/daydayup/project_doc.git
+cd project_doc
+```
+
+**步骤 2：创建新分支**
+```bash
+# 拉取最新代码
+git checkout main
+git pull origin main
+
+# 创建并切换到新分支
+git checkout -b feature/add-new-docs
+```
+
+**步骤 3：修改文档**
+```bash
+# 编辑文档...
+# 可以使用 npm start 本地预览
+
+# 查看修改
+git status
+git diff
+```
+
+**步骤 4：提交代码**
+```bash
+# 添加修改的文件
+git add .
+
+# 提交（使用规范的 commit message）
+git commit -m "docs: 添加 XXX 文档
+
+详细描述：
+- 新增了 XXX 功能的使用说明
+- 更新了 YYY 的配置示例
+- 修复了 ZZZ 的错别字
+"
+```
+
+**步骤 5：推送到 GitLab**
+```bash
+git push origin feature/add-new-docs
+```
+
+**步骤 6：创建 Merge Request**
+
+1. 推送成功后，终端会显示创建 MR 的链接，或者：
+2. 访问 http://116.178.69.6:30590/daydayup/project_doc/-/merge_requests
+3. 点击 "New merge request"
+4. 选择源分支（你的分支）和目标分支（`main`）
+5. 填写 MR 信息：
+   - **Title**：简洁描述（如：docs: 添加 API 使用文档）
+   - **Description**：详细说明改动内容
+   - **Assignee**：选择 `muqiao`
+   - **Reviewer**：选择 `muqiao`
+6. 点击 "Create merge request"
+
+**步骤 7：等待审核和合并**
+- muqiao 会审核你的 MR
+- 如有问题会在 MR 中评论
+- 你需要根据反馈修改代码
+- 审核通过后，muqiao 会合并到 `main`
+
+---
+
+## 🔄 Merge Request 规范
+
+### MR 标题格式
+
+使用语义化的前缀：
+
+```
+类型: 简短描述
+
+类型：
+- docs: 文档相关
+- feat: 新增功能
+- fix: 修复问题
+- refactor: 重构代码
+- style: 样式调整
+- chore: 构建/配置相关
+```
+
+**示例**：
+- ✅ `docs: 添加 API 认证文档`
+- ✅ `feat: 新增数据中心模块`
+- ✅ `fix: 修复侧边栏链接错误`
+- ❌ `更新文档`（太模糊）
+- ❌ `fix bug`（不够具体）
+
+### MR 描述模板
+
+```markdown
+## 改动说明
+简要描述这个 MR 的目的和改动内容。
+
+## 改动内容
+- 新增了 XXX 文档
+- 修改了 YYY 配置
+- 删除了过时的 ZZZ
+
+## 测试
+- [ ] 本地构建通过 (`npm run build`)
+- [ ] 本地预览正常 (`npm start`)
+- [ ] 链接检查通过
+
+## 截图（如有）
+（粘贴截图）
+
+## 相关 Issue
+关闭 #123
+```
+
+---
+
+## 🚀 自动部署（Pipeline）
+
+### Pipeline 流程
+
+当 MR 合并到 `main` 分支后，GitLab CI/CD 会自动触发部署流程：
+
+```
+1. 代码合并到 main
+   ↓
+2. 触发 GitLab Pipeline
+   ↓
+3. 执行构建
+   - npm install（安装依赖）
+   - npm run build（构建静态文件）
+   ↓
+4. 构建 Docker 镜像
+   ↓
+5. 推送到镜像仓库
+   ↓
+6. 部署到 Kubernetes
+   - 更新 Deployment
+   - 滚动更新 Pod
+   ↓
+7. 部署完成
+   - 访问新版本文档站
+```
+
+### Pipeline 配置
+
+Pipeline 配置文件：`.gitlab-ci.yml`
+
+**主要阶段**：
+1. **build**: 构建静态文件
+2. **docker**: 构建 Docker 镜像
+3. **deploy**: 部署到 K8s
+
+### 查看 Pipeline 状态
+
+**方式 1：在 MR 页面查看**
+- MR 页面会显示 Pipeline 状态
+- ✅ 绿色：通过
+- ❌ 红色：失败
+- ⏸️ 黄色：运行中
+
+**方式 2：在 Pipelines 页面查看**
+1. 访问：http://116.178.69.6:30590/daydayup/project_doc/-/pipelines
+2. 查看最新的 Pipeline
+3. 点击进入查看详细日志
+
+### Pipeline 失败怎么办？
+
+如果 Pipeline 失败：
+
+1. **查看失败日志**
+   - 点击失败的 Job
+   - 查看错误信息
+
+2. **常见失败原因**
+   - 构建错误：检查代码是否有语法错误
+   - 链接错误：检查文档中的链接是否正确
+   - 依赖问题：检查 `package.json`
+
+3. **修复流程**
    ```bash
-   git checkout -b feature/your-feature-name
-   ```
+   # 在本地修复问题
+   npm run build  # 确保构建通过
 
-2. **添加/修改文档**
-   - 遵循文档规范
-   - 确保格式正确
-
-3. **本地预览确认无误**
-   ```bash
-   npm start
-   ```
-
-4. **提交代码**
-   ```bash
+   # 提交修复
    git add .
-   git commit -m "docs: 添加 XXX 文档"
-   git push origin feature/your-feature-name
+   git commit -m "fix: 修复构建错误"
+   git push origin your-branch
    ```
 
-5. **提交 Pull Request**
-   - 在 Git 平台创建 PR
-   - 等待 Review
+4. **联系维护者**
+   - 如果无法解决，联系 muqiao
+   - 在 MR 中评论说明问题
 
-### 文档规范
+---
 
-#### Markdown 格式
+## 🔍 Code Review 流程
+
+### 对于提交者
+
+**MR 提交后**：
+1. 确保 Pipeline 通过（绿色✅）
+2. 等待 muqiao 审核
+3. 及时回复审核意见
+4. 根据反馈修改代码
+
+**收到审核意见后**：
+```bash
+# 在同一分支上修改
+git checkout your-branch
+
+# 修改代码...
+
+# 提交修改
+git add .
+git commit -m "fix: 根据审核意见修改"
+git push origin your-branch
+
+# MR 会自动更新，无需创建新 MR
+```
+
+### 对于审核者（muqiao）
+
+**审核要点**：
+1. ✅ 文档内容准确性
+2. ✅ 格式是否规范
+3. ✅ 链接是否正确
+4. ✅ 代码块语法高亮
+5. ✅ 图片是否清晰
+6. ✅ 是否有错别字
+
+**审核结果**：
+- **Approve**：审核通过，可以合并
+- **Request changes**：需要修改，附上具体意见
+- **Comment**：提出建议，不强制修改
+
+---
+
+## 📋 常见场景
+
+### 场景 1：快速修复错别字
+
+**最简单方式**：
+1. 点击文档页面的"编辑此页"
+2. 在 GitLab Web 界面直接修改
+3. 提交时勾选"Start a new merge request"
+4. 填写 MR 信息，等待合并
+
+**时间**：5 分钟
+
+---
+
+### 场景 2：添加新文档
+
+**推荐方式**：命令行
+1. 克隆仓库
+2. 创建新分支（如 `docs/add-xxx`）
+3. 创建文档文件
+4. 更新 `sidebars.ts`
+5. 本地预览 (`npm start`)
+6. 提交并推送
+7. 创建 MR
+
+**时间**：30-60 分钟
+
+---
+
+### 场景 3：大规模重构
+
+**步骤**：
+1. 先在 Issue 中讨论方案
+2. 获得 muqiao 同意后开始
+3. 创建分支
+4. 分批次提交（避免单个 MR 过大）
+5. 充分测试
+6. 创建 MR，详细说明改动
+
+**时间**：1-3 天
+
+---
+
+## ⚙️ 本地开发建议
+
+### 开发前
+```bash
+# 1. 确保在最新的 main 分支
+git checkout main
+git pull origin main
+
+# 2. 创建新分支
+git checkout -b docs/your-feature
+
+# 3. 安装依赖（首次或依赖更新后）
+npm install
+```
+
+### 开发中
+```bash
+# 启动开发服务器（支持热更新）
+npm start
+
+# 在浏览器中访问 http://localhost:3000
+# 修改文档后会自动刷新
+```
+
+### 提交前
+```bash
+# 1. 构建检查（必须通过）
+npm run build
+
+# 2. 检查是否有未提交的文件
+git status
+
+# 3. 查看改动
+git diff
+
+# 4. 提交
+git add .
+git commit -m "docs: 你的改动描述"
+
+# 5. 推送
+git push origin docs/your-feature
+```
+
+---
+
+## 🆘 遇到问题？
+
+### Git 相关问题
+
+**Q：如何解决冲突？**
+```bash
+# 拉取最新 main 分支
+git checkout main
+git pull origin main
+
+# 切回你的分支并合并
+git checkout your-branch
+git merge main
+
+# 手动解决冲突
+# 编辑冲突文件，删除冲突标记
+
+# 提交解决结果
+git add .
+git commit -m "merge: 解决冲突"
+git push origin your-branch
+```
+
+**Q：如何更新分支到最新？**
+```bash
+git checkout your-branch
+git pull origin main
+git push origin your-branch
+```
+
+### Pipeline 问题
+
+**Q：Pipeline 失败了怎么办？**
+- 查看失败的 Job 日志
+- 本地运行 `npm run build` 复现问题
+- 修复后重新提交，Pipeline 会自动重跑
+
+**Q：部署后没有生效？**
+- 检查 Pipeline 是否全部成功
+- 清除浏览器缓存
+- 等待 1-2 分钟（Pod 重启需要时间）
+- 联系 muqiao 检查 K8s 部署状态
+
+---
+
+## 📞 联系方式
+
+### 文档相关问题
+- **维护者**：muqiao
+- **技术群**：钉钉「天天向上研发组」
+- **邮件**：muqiao企业油箱
+
+### 紧急问题
+- **GitLab 问题**：联系 IT 支持
+- **部署问题**：联系运维团队
+- **权限问题**：联系 muqiao
+
+## 📝 文档规范
+
+### Markdown 格式
 - 使用标准 Markdown 语法
 - 标题层级清晰（h1 → h2 → h3）
 - 段落之间空一行
