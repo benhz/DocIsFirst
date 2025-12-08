@@ -91,13 +91,13 @@ export default function TeamWall({ members }: TeamWallProps) {
                       key={idx}
                       style={{
                         fontSize: '0.7rem',
-                        padding: '0.2rem 0.6rem',
-                        borderRadius: '12px',
-                        background: 'var(--ifm-color-primary)',
-                        color: '#fff',
+                        padding: '0.25rem 0.6rem',
+                        borderRadius: '6px',
+                        background: 'rgba(255, 140, 66, 0.1)',
+                        color: '#d97706',
+                        border: '1px solid rgba(255, 140, 66, 0.3)',
                         fontWeight: 500,
                         whiteSpace: 'nowrap',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                       }}
                     >
                       {tag}
