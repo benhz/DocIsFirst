@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: '开发者中心',
   tagline: '产品、平台、开发、运维、API、组织全方位文档',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/Qicat.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -167,8 +167,8 @@ const config: Config = {
               to: '/blog',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Gitlab',
+              href: 'http://116.178.69.6:30590/daydayup/project_doc.git',
             },
           ],
         },

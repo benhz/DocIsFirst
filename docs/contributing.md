@@ -754,7 +754,7 @@ git push origin your-branch
 ### 文档相关问题
 - **维护者**：muqiao
 - **技术群**：钉钉「天天向上研发组」
-- **邮件**：muqiao企业油箱
+- **邮件**：muqiao企业邮箱
 
 ### 紧急问题
 - **GitLab 问题**：联系 IT 支持
