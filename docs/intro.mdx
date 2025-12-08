@@ -1,7 +1,9 @@
 import ProfileCard from '@site/src/components/ProfileCard';
 import TeamWall from '@site/src/components/TeamWall';
+import MySpace from '@site/src/components/MySpace';
 import Tip from '@site/src/components/Tip';
 import Carousel from '@site/src/components/Carousel';
+import { teamMembers, getFullStackMembers, getUIMembers, getFrontendMembers } from '@site/src/config/teamMembers';
 
 # 🏠 欢迎来到开发者中心
 —— 这里是我们 5 个人的小社会，但写出的代码能镇压一整个星系
@@ -103,80 +105,54 @@ import Carousel from '@site/src/components/Carousel';
 <Tip type="info" message="以下信息为团队灵魂核心，如需更新请保持骚话密度。" />
 
 ### 🧑‍💻 全栈天团（3 人）
-<ProfileCard
-  name="A同学"
-  role="全栈猛男"
-  slogan="写前端像后端，写后端像前端，写 Bug 像不要命"
-/>
-
-<ProfileCard
-  name="B同学"
-  role="全栈工具人"
-  slogan="别人靠语法，我靠运气"
-/>
-
-<ProfileCard
-  name="C同学"
-  role="全栈老实人"
-  slogan="我没意见，你说啥就是啥"
-/>
+{getFullStackMembers().map((member) => (
+  <ProfileCard
+    key={member.id}
+    name={member.name}
+    avatar={member.avatar}
+    role={member.role}
+    slogan={member.slogan}
+  />
+))}
 
 ---
 
-### 🎨 UI / 设计部（1 人）  
-<ProfileCard
-  name="D同学"
-  role="UI 仙女 / 配色大师"
-  slogan="我已经尽力了，可你们为什么还要乱写样式？"
-/>
+### 🎨 UI / 设计部（1 人）
+{getUIMembers().map((member) => (
+  <ProfileCard
+    key={member.id}
+    name={member.name}
+    avatar={member.avatar}
+    role={member.role}
+    slogan={member.slogan}
+  />
+))}
 
 ---
 
-### 🕸️ 前端部（1 人）  
-<ProfileCard
-  name="E同学"
-  role="前端小王子"
-  slogan="我的代码没问题，是浏览器不行"
-/>
+### 🕸️ 前端部（1 人）
+{getFrontendMembers().map((member) => (
+  <ProfileCard
+    key={member.id}
+    name={member.name}
+    avatar={member.avatar}
+    role={member.role}
+    slogan={member.slogan}
+  />
+))}
 
 ---
 
-# 🧱 团队墙组件 TeamWall  
+# 🧱 团队墙组件 TeamWall
 —— 把团队的灵魂刻在文档首页
 
 <TeamWall
-  members={[
-    {
-      name: "A同学",
-      avatar: "/img/logo.svg",
-      role: "全栈猛男",
-      quote: "Bug 越多，我越强。",
-    },
-    {
-      name: "B同学",
-      avatar: "/img/logo.svg",
-      role: "工具人",
-      quote: "上线？又上线？",
-    },
-    {
-      name: "C同学",
-      avatar: "/img/logo.svg",
-      role: "全栈老实人",
-      quote: "你们开心就好。",
-    },
-    {
-      name: "D同学",
-      avatar: "/img/logo.svg",
-      role: "UI 大仙",
-      quote: "我已经尽力救你们的页面了……",
-    },
-    {
-      name: "E同学",
-      avatar: "/img/logo.svg",
-      role: "前端小王子",
-      quote: "CSS 不是我写的，它自己歪的。",
-    },
-  ]}
+  members={teamMembers.map((member) => ({
+    name: member.name,
+    avatar: member.avatar,
+    role: member.role,
+    quote: member.quote,
+  }))}
 />
 
 ---
@@ -187,28 +163,18 @@ import Carousel from '@site/src/components/Carousel';
 
 ## ✍️ My Space
 
-### 🌿 A同学的空间
-> “我写代码不是因为我喜欢，而是因为它不允许我讨厌。”
-
----
-
-### 🔥 B同学的空间
-> “上线就像赌博，赢了皆大欢喜，输了怪我一个人。”
-
----
-
-### 🌙 C同学的空间
-> “有没有我都一样，但最好当我没来。”
-
----
-
-### 🎨 D同学的空间
-> “设计一稿过？这比产品写清楚需求还难。”
-
----
-
-### 🌈 E同学的空间
-> “我讨厌写样式，但样式更讨厌我。”
+{teamMembers.map((member, index) => (
+  <>
+    <MySpace
+      key={member.id}
+      name={member.name}
+      avatar={member.avatar}
+      emoji={member.spaceEmoji}
+      content={member.spaceContent}
+    />
+    {index < teamMembers.length - 1 && <hr />}
+  </>
+))}
 
 ---
 
