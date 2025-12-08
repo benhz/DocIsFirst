@@ -1,12 +1,16 @@
 import ProfileCard from '@site/src/components/ProfileCard';
 import TeamWall from '@site/src/components/TeamWall';
 import Tip from '@site/src/components/Tip';
-import Hero from '@site/src/components/Hero';
+import Carousel from '@site/src/components/Carousel';
 
 # 🏠 欢迎来到开发者中心
 —— 这里是我们 5 个人的小社会，但写出的代码能镇压一整个星系
 
-<Hero />
+<Carousel images={[
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=400&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=400&fit=crop&q=80",
+  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&h=400&fit=crop&q=80",
+]} />
 
 <ProfileCard
   name="你的名字"
