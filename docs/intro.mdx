@@ -2,6 +2,8 @@ import ProfileCard from '@site/src/components/ProfileCard';
 import TeamWall from '@site/src/components/TeamWall';
 import Tip from '@site/src/components/Tip';
 import Carousel from '@site/src/components/Carousel';
+import MySpace from '@site/src/components/MySpace';
+import { allSpaces } from '@site/src/spaces';
 
 # 🏠 欢迎来到开发者中心
 —— 这里是我们 5 个人的小社会，但写出的代码能镇压一整个星系
@@ -150,32 +152,38 @@ import Carousel from '@site/src/components/Carousel';
 <TeamWall
   members={[
     {
+      name: "benhz",
+      avatar: "/img/avatars/benhz.jpg",
+      role: ["全栈开发", "架构师", "技术负责人"],
+      quote: "代码是写给人看的，顺便让机器执行。",
+    },
+    {
       name: "A同学",
-      avatar: "/img/logo.svg",
+      avatar: "/img/avatars/a-classmate.jpg",
       role: ["全栈猛男", "Bug制造机", "加班王"],
       quote: "Bug 越多，我越强。",
     },
     {
       name: "B同学",
-      avatar: "/img/logo.svg",
+      avatar: "/img/avatars/b-classmate.jpg",
       role: ["工具人", "救火队员", "背锅侠"],
       quote: "上线？又上线？",
     },
     {
       name: "C同学",
-      avatar: "/img/logo.svg",
+      avatar: "/img/avatars/c-classmate.jpg",
       role: ["全栈老实人", "代码搬运工", "佛系开发"],
       quote: "你们开心就好。",
     },
     {
       name: "D同学",
-      avatar: "/img/logo.svg",
+      avatar: "/img/avatars/d-classmate.jpg",
       role: ["UI 大仙", "配色大师", "像素眼"],
       quote: "我已经尽力救你们的页面了……",
     },
     {
       name: "E同学",
-      avatar: "/img/logo.svg",
+      avatar: "/img/avatars/e-classmate.jpg",
       role: ["前端小王子", "CSS魔法师", "调试狂人"],
       quote: "CSS 不是我写的，它自己歪的。",
     },
@@ -186,32 +194,32 @@ import Carousel from '@site/src/components/Carousel';
 
 # 🧘 **每个人的私人空间：My Space 模块**
 
-<Tip type="star" message="这是你们自由发挥、写骚话、发牢骚、记录灵感的地方。" />
+<Tip type="star" message="这是你们自由发挥、写骚话、发牢骚、记录灵感的地方。每个人只需编辑自己的文件即可更新内容！" />
 
-## ✍️ My Space
-
-### 🌿 A同学的空间
-> “我写代码不是因为我喜欢，而是因为它不允许我讨厌。”
+<MySpace members={allSpaces} />
 
 ---
 
-### 🔥 B同学的空间
-> “上线就像赌博，赢了皆大欢喜，输了怪我一个人。”
+### 📝 如何更新你的 My Space？
 
----
+每位同学都有自己的独立文件，位于 `src/spaces/` 目录：
 
-### 🌙 C同学的空间
-> “有没有我都一样，但最好当我没来。”
+- `benhz-space.ts` - benhz 的个人空间
+- `a-classmate-space.ts` - A同学的个人空间
+- `b-classmate-space.ts` - B同学的个人空间
+- `c-classmate-space.ts` - C同学的个人空间
+- `d-classmate-space.ts` - D同学的个人空间
+- `e-classmate-space.ts` - E同学的个人空间
 
----
+**只需编辑你自己的文件，保存即可！** 支持以下可扩展内容：
+- 💬 今日名言
+- 🌡️ 心情指数
+- 🕳️ 本周踩坑记录
+- 💡 灵感瞬间
+- 🤣 想打谁但没打成
+- ✨ 自定义内容模块
 
-### 🎨 D同学的空间
-> “设计一稿过？这比产品写清楚需求还难。”
-
----
-
-### 🌈 E同学的空间
-> “我讨厌写样式，但样式更讨厌我。”
+详细使用说明请查看 `src/spaces/README.md`
 
 ---
 

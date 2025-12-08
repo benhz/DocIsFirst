@@ -11,7 +11,7 @@
 
 ### Day 3-5：文档学习
 建议按以下顺序阅读：
-1. [文档首页](../intro.md) - 了解整体
+1. [文档首页](../intro.mdx) - 了解整体
 2. [系统架构](../development/architecture/system-architecture.md) - 了解架构
 3. [开发规范](../development/standards/code-style.md) - 了解规范
 4. [Git 工作流](../development/standards/git-workflow.md) - 了解流程
