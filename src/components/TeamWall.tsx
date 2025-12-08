@@ -93,9 +93,9 @@ export default function TeamWall({ members }: TeamWallProps) {
                         fontSize: '0.7rem',
                         padding: '0.25rem 0.6rem',
                         borderRadius: '6px',
-                        background: 'rgba(255, 140, 66, 0.1)',
-                        color: '#d97706',
-                        border: '1px solid rgba(255, 140, 66, 0.3)',
+                        background: 'var(--ifm-color-emphasis-100)',
+                        color: 'var(--ifm-color-emphasis-800)',
+                        border: '1.5px solid #f97316',
                         fontWeight: 500,
                         whiteSpace: 'nowrap',
                       }}
