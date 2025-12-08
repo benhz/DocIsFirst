@@ -3,7 +3,7 @@ import React from 'react';
 type Member = {
   name: string;
   avatar?: string;
-  role?: string;
+  role?: string | string[];  // 支持字符串或标签数组
   quote?: string;
 };
 
@@ -80,12 +80,28 @@ export default function TeamWall({ members }: TeamWallProps) {
               {m.role && (
                 <div
                   style={{
-                    fontSize: '0.8rem',
-                    color: 'var(--ifm-color-emphasis-600)',
-                    marginTop: '0.1rem',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '0.35rem',
+                    marginTop: '0.35rem',
                   }}
                 >
-                  {m.role}
+                  {(Array.isArray(m.role) ? m.role : [m.role]).map((tag, idx) => (
+                    <span
+                      key={idx}
+                      style={{
+                        fontSize: '0.7rem',
+                        padding: '0.15rem 0.5rem',
+                        borderRadius: '12px',
+                        background: 'var(--ifm-color-primary-lightest)',
+                        color: 'var(--ifm-color-primary-dark)',
+                        border: '1px solid var(--ifm-color-primary-light)',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               )}
               {m.quote && (
@@ -97,7 +113,7 @@ export default function TeamWall({ members }: TeamWallProps) {
                     fontStyle: 'italic',
                   }}
                 >
-                  “{m.quote}”
+                  "{m.quote}"
                 </div>
               )}
             </div>
