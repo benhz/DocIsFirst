@@ -1,6 +1,6 @@
-# 📁 个人空间文件夹说明
+# 🌟 My Space - 个人风采展示
 
-这个文件夹存放每位团队成员的个人空间数据，以**周为单位**记录。
+这个文件夹存放每位团队成员的个人风采展示数据。这不是工作周报，而是展示真实的你！
 
 ## 📝 如何使用
 
@@ -13,198 +13,259 @@
 - `d-classmate-space.ts` - D同学的个人空间
 - `e-classmate-space.ts` - E同学的个人空间
 
-## 📅 周报结构
-
-每个空间支持多周数据，以周为单位记录你的日常：
+## ✨ 数据结构
 
 ```typescript
 export const yourSpace = {
   id: 'your-id',
   name: '你的名字',
-  emoji: '🌟',
-  weeks: [
+  avatar: '/img/avatars/your-avatar.jpg',  // 头像路径
+  emoji: '🌟',                              // 你的专属emoji
+
+  // === 顶部个人信息 ===
+  bio: '你的个性签名',                      // 一句话介绍自己
+  tags: ['标签1', '标签2', '标签3'],        // 个人标签云
+  currentStatus: '当前在做什么',             // 当前状态
+  themeColor: '#10b981',                   // 主题色(可选)
+
+  // === 技能树 ===
+  skills: [
     {
-      weekNumber: 1,              // 周次编号
-      weekLabel: '第 1 周',        // 周次标签
-      dateRange: '12.02 - 12.08', // 日期范围（可选）
-      summary: '本周总结',         // 本周一句话总结（可选）
-      mood: '😊',                 // 本周心情（可选）
-
-      // 以下是可选的内容模块
-      achievements: [              // 本周成就
-        '完成了XX功能',
-        '解决了XX问题',
-      ],
-      weeklyBugs: [                // 踩坑记录
-        '遇到了XX问题',
-        '被XX坑了',
-      ],
-      learnings: [                 // 本周学习
-        '学会了XX',
-        '掌握了XX',
-      ],
-      inspiration: '灵感内容',     // 灵感瞬间
-      frustration: '吐槽内容',     // 想打谁但没打成
-
-      customSections: [            // 自定义内容模块
-        {
-          title: '自定义标题',
-          emoji: '✨',
-          content: '自定义内容',
-        },
-      ],
+      name: 'TypeScript',
+      level: 95,  // 0-100
+      color: 'linear-gradient(90deg, #3178c6 0%, #235a97 100%)',  // 可选
     },
-    // 可以继续添加第 2 周、第 3 周...
+  ],
+
+  // === 高光时刻 ===
+  achievements: [
+    {
+      icon: '🚀',
+      title: '成就标题',
+      description: '成就描述',
+      date: '2024.11',  // 可选
+    },
+  ],
+
+  // === 兴趣爱好 ===
+  hobbies: [
+    {
+      icon: '☕',
+      name: '咖啡',
+      description: '每天至少3杯',  // 可选
+    },
+  ],
+
+  // === 金句墙 ===
+  favoriteQuotes: [
+    {
+      text: '你喜欢的名言',
+      author: '作者名字',  // 可选
+    },
+  ],
+
+  // === 随笔动态 ===
+  moments: [
+    {
+      emoji: '💭',
+      content: '想说的话',
+      date: '2024.12.07',  // 可选
+    },
+  ],
+
+  // === 自定义卡片 ===
+  customCards: [
+    {
+      title: '卡片标题',
+      emoji: '📖',
+      content: '卡片内容',
+      color: 'linear-gradient(135deg, rgba(255, 159, 64, 0.1), rgba(255, 99, 132, 0.05))',  // 可选
+    },
   ],
 };
 ```
 
-## ✨ 可用的内容模块
+## 🎨 可用模块
 
-### 基础信息
-- **weekNumber** - 周次编号（必填）
-- **weekLabel** - 周次标签，如"第 1 周"（必填）
-- **dateRange** - 日期范围，如"12.02 - 12.08"（可选）
-- **summary** - 本周一句话总结（可选）
-- **mood** - 心情 emoji（可选）
-
-### 内容模块
-- 🏆 **achievements** - 本周成就（数组）
-- 🕳️ **weeklyBugs** - 踩坑记录（数组）
-- 📚 **learnings** - 本周学习（数组）
-- 💡 **inspiration** - 灵感瞬间（字符串）
-- 🤣 **frustration** - 想打谁但没打成（字符串）
-- ✨ **customSections** - 自定义模块（数组）
-
-### 自定义模块格式
-
+### 1. 顶部个人信息（必填）
 ```typescript
-customSections: [
+{
+  id: 'your-id',           // 唯一标识符
+  name: '你的名字',
+  avatar: '/img/avatars/your-avatar.jpg',  // 头像
+  emoji: '🌟',            // emoji
+  bio: '个性签名',         // 推荐填写
+  tags: ['标签1', '标签2'], // 推荐填写
+  currentStatus: '当前状态',  // 可选
+  themeColor: '#10b981',   // 可选，hex颜色
+}
+```
+
+### 2. 💪 技能树
+展示你的技能水平，支持彩色进度条：
+```typescript
+skills: [
   {
-    title: '模块标题',
-    emoji: '🎯',      // 可选
-    content: '模块内容',
+    name: 'TypeScript',
+    level: 95,  // 0-100
+    color: 'linear-gradient(90deg, #3178c6 0%, #235a97 100%)',
   },
 ]
 ```
 
-## 🎯 编辑步骤
-
-### 1. 添加新的一周
-
-在 `weeks` 数组中添加新的周数据：
-
+### 3. 🏆 高光时刻
+展示你的成就和里程碑：
 ```typescript
-weeks: [
+achievements: [
   {
-    weekNumber: 1,
-    weekLabel: '第 1 周',
-    dateRange: '12.02 - 12.08',
-    // ... 其他内容
-  },
-  {
-    weekNumber: 2,
-    weekLabel: '第 2 周',
-    dateRange: '12.09 - 12.15',
-    summary: '第二周的总结',
-    mood: '🚀',
-    achievements: ['完成了新功能'],
-    // ... 其他内容
+    icon: '🚀',
+    title: '成就标题',
+    description: '详细描述',
+    date: '2024.11',
   },
 ]
 ```
 
-### 2. 更新本周内容
+### 4. 🎨 兴趣爱好
+展示你的兴趣爱好：
+```typescript
+hobbies: [
+  {
+    icon: '☕',
+    name: '咖啡',
+    description: '每天至少3杯',
+  },
+]
+```
 
-直接修改对应周次的数据：
+### 5. 💬 金句墙
+收藏你喜欢的名言：
+```typescript
+favoriteQuotes: [
+  {
+    text: '你喜欢的名言',
+    author: '作者',
+  },
+]
+```
 
+### 6. ✍️ 随笔动态
+记录你的想法和吐槽：
+```typescript
+moments: [
+  {
+    emoji: '💭',
+    content: '想说的话',
+    date: '2024.12.07',
+  },
+]
+```
+
+### 7. ✨ 自定义卡片
+添加任何你想要的内容：
+```typescript
+customCards: [
+  {
+    title: '卡片标题',
+    emoji: '📖',
+    content: '卡片内容',
+    color: 'linear-gradient(...)',  // 自定义背景色
+  },
+]
+```
+
+## 🎯 使用指南
+
+### 快速开始
+
+1. 打开你的空间文件（如 `benhz-space.ts`）
+2. 修改基本信息（姓名、头像、签名、标签）
+3. 添加你想展示的模块
+4. 保存文件，刷新页面查看效果
+
+### 推荐配置
+
+**最小配置**（必填项）：
 ```typescript
 {
-  weekNumber: 1,
-  weekLabel: '第 1 周',
-  achievements: [
-    '完成了用户模块',
-    '修复了 3 个 Bug',  // 新增成就
-  ],
+  id: 'your-id',
+  name: '你的名字',
+  emoji: '🌟',
+  bio: '个性签名',
+  tags: ['标签1', '标签2'],
 }
 ```
 
-### 3. 不需要的模块可以删除
+**完整配置**（展示所有风采）：
+- 基本信息 + 技能树 + 高光时刻 + 兴趣爱好 + 金句墙 + 随笔
 
-如果某个模块不想用，直接删除对应字段即可：
-
-```typescript
-{
-  weekNumber: 1,
-  weekLabel: '第 1 周',
-  summary: '只保留总结',
-  // 不需要其他模块，不写就行
-}
-```
-
-## 🎨 视觉效果
-
-新的 MySpace 组件提供了以下视觉优化：
-
-- **周选择器** - 点击按钮切换不同周次
-- **渐变卡片** - 每种类型的内容都有独特的渐变背景色
-  - 🏆 成就：金色渐变
-  - 🕳️ 踩坑：红色渐变
-  - 📚 学习：蓝色渐变
-  - 💡 灵感：紫色渐变
-  - 🤣 吐槽：粉色渐变
-  - ✨ 自定义：绿色渐变
-- **悬停效果** - 卡片悬停时会有轻微抬起效果
-- **响应式布局** - 自适应网格布局，移动端友好
+**自由配置**：
+- 只保留你喜欢的模块，删除不需要的模块
 
 ## 💡 使用技巧
 
-### 1. 快速复制模板
-
+### 1. 选择合适的主题色
 ```typescript
-{
-  weekNumber: X,
-  weekLabel: '第 X 周',
-  dateRange: 'MM.DD - MM.DD',
-  summary: '本周总结',
-  mood: '😊',
-  achievements: ['成就1', '成就2'],
-  weeklyBugs: ['坑1', '坑2'],
-  learnings: ['学习1', '学习2'],
-  inspiration: '灵感',
-  frustration: '吐槽',
-}
+themeColor: '#10b981',  // 绿色
+themeColor: '#ef4444',  // 红色
+themeColor: '#3b82f6',  // 蓝色
+themeColor: '#8b5cf6',  // 紫色
+themeColor: '#ec4899',  // 粉色
 ```
 
-### 2. 只记录重要内容
+### 2. 技能条的渐变色
+可以在 [uiGradients](https://uigradients.com/) 找到好看的渐变色
 
-不是每个模块都要填满，只记录你觉得重要的：
+### 3. Emoji 的使用
+- 可以在 [Emojipedia](https://emojipedia.org/) 查找合适的 emoji
+- 合理使用 emoji 能让内容更生动
 
-```typescript
-{
-  weekNumber: 1,
-  weekLabel: '第 1 周',
-  summary: '平平无奇的一周',
-  mood: '😐',
-  // 这周没啥特别的，就这样
-}
-```
+### 4. 保持真实和有趣
+- 不需要正式，轻松一点
+- 展示真实的自己
+- 可以加点幽默和吐槽
+- 这是你的个人空间，想怎么玩就怎么玩
 
-### 3. 使用 Emoji 增加趣味性
+## 🎨 视觉效果
 
-```typescript
-summary: '🎉 这周超棒！完成了重大突破！',
-achievements: ['🚀 性能优化提升 10 倍'],
-frustration: '🤬 又是那个该死的 Bug！',
-```
+### 顶部区域
+- 大头像展示
+- 个性签名
+- 标签云（漂亮的小标签）
+- 当前状态
+- 支持自定义主题色
 
-## 🚀 开始使用
+### 卡片效果
+- 每种模块都有独特的渐变配色
+- 悬停时会有抬起动画
+- 响应式布局，自适应不同屏幕
 
-1. 打开你的空间文件（如 `benhz-space.ts`）
-2. 在 `weeks` 数组中添加或修改周数据
-3. 保存文件
-4. 刷新页面查看效果
+### 特殊效果
+- **技能树**：彩色进度条动画
+- **兴趣爱好**：网格布局展示
+- **金句墙**：优雅的引用样式
+- **随笔动态**：类似朋友圈的卡片流
+
+## 📖 示例参考
+
+可以参考其他同学的空间文件作为灵感：
+
+- `benhz-space.ts` - 技术大佬风格
+- `a-classmate-space.ts` - 技术极客风格
+- `b-classmate-space.ts` - 运维专家风格
+- `c-classmate-space.ts` - 佛系摸鱼风格
+- `d-classmate-space.ts` - 设计师风格
+- `e-classmate-space.ts` - 前端工程师风格
+
+## 🚀 开始展示你的风采
+
+1. 选择一个示例文件作为模板
+2. 修改成你自己的内容
+3. 保存并刷新页面
+4. 看到效果后继续调整
+
+记住：**这是你的个人空间，想怎么展示就怎么展示！** ✨
 
 ---
 
-**记住：这是你的个人空间，想怎么玩就怎么玩！** 🎉
+**需要帮助？** 查看其他同学的文件获取灵感，或者在团队群里讨论！
