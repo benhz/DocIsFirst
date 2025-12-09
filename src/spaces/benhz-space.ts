@@ -104,7 +104,7 @@ export const benhzSpace = {
     {
       icon: '🎮',
       name: '游戏',
-      description: '通关《塞尔达：旷野之息》，依旧沉迷海拉鲁',
+      description: '通关《塞尔达：旷野之息》，沉迷海拉鲁',
     },
     {
       icon: '🏃',
@@ -115,11 +115,6 @@ export const benhzSpace = {
       icon: '📝',
       name: '写博客',
       description: '还没真正放弃（应该吧）',
-    },
-    {
-      icon: '🌐',
-      name: '关注 Web3',
-      description: '长期关注应用与生态演化，保持一点点空投幻想',
     },
     {
       icon: '✈️',
