@@ -10,7 +10,7 @@
  */
 
 import { benhzSpace } from './benhz-space';
-import { muqiaoSpace } from './muqiao-space';
+import { muqiaoSpace } from './mquiao-space';
 import { cClassmateSpace } from './c-classmate-space';
 import { dClassmateSpace } from './d-classmate-space';
 import { eClassmateSpace } from './e-classmate-space';

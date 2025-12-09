@@ -10,14 +10,14 @@
  */
 
 import { benhzSpace } from './benhz-space';
-import { muqiaoSpace } from './muqiao-space';
+import { bClassmateSpace } from './b-classmate-space';
 import { cClassmateSpace } from './c-classmate-space';
 import { dClassmateSpace } from './d-classmate-space';
 import { eClassmateSpace } from './e-classmate-space';
 
 export const allSpaces = [
   benhzSpace,
-  muqiaoSpace,
+  bClassmateSpace,
   cClassmateSpace,
   dClassmateSpace,
   eClassmateSpace
@@ -26,7 +26,7 @@ export const allSpaces = [
 // 导出单个空间，方便按需使用
 export {
   benhzSpace,
-  muqiaoSpace,
+  bClassmateSpace,
   cClassmateSpace,
   dClassmateSpace,
   eClassmateSpace
