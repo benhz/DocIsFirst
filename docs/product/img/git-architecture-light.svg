@@ -10,7 +10,7 @@
     </linearGradient>
     <linearGradient id="git-arch-layer3" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color:#14b8a6"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
     </linearGradient>
     <filter id="git-arch-shadow">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.1"/>
