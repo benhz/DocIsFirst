@@ -15,7 +15,7 @@ type ProductItem = {
 
 const ProductList: ProductItem[] = [
   {
-    title: '云原生平台',
+    title: '代码托管平台',
     icon: '☁️',
     description: (
       <>
@@ -23,22 +23,22 @@ const ProductList: ProductItem[] = [
       </>
     ),
     features: ['容器编排', '服务网格', '自动扩缩容', 'CI/CD'],
-    link: '/docs/product/',
+    link: '/docs/product/product-a/overview',
     badge: '热门',
   },
   {
-    title: '数据分析平台',
+    title: '智慧问数平台',
     icon: '📊',
     description: (
       <>
         强大的大数据处理和分析平台，支持实时数据处理、数据仓库和可视化分析。
       </>
     ),
-    features: ['实时计算', '数据仓库', 'BI看板', '机器学习'],
+    features: ['实时计算', '数据仓库', 'BI看板', '机器学习' ],
     link: '/docs/product/',
   },
   {
-    title: 'API 网关',
+    title: '智联知识库智能体开发平台',
     icon: '🚪',
     description: (
       <>
@@ -50,7 +50,7 @@ const ProductList: ProductItem[] = [
     badge: '新品',
   },
   {
-    title: '监控告警系统',
+    title: '文档管理平台',
     icon: '📈',
     description: (
       <>
