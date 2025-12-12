@@ -36,6 +36,7 @@ const ProductList: ProductItem[] = [
     ),
     features: ['智能问答', '数据可视化', '实时分析', '智能报表'],
     link: '/docs/product/smart-data/overview',
+    badge: '敬请期待',
   },
   {
     title: '智联知识库智能体开发平台',
@@ -59,6 +60,7 @@ const ProductList: ProductItem[] = [
     ),
     features: ['文档协作', '版本管理', '权限控制', '全文检索'],
     link: '/docs/product/doc-management/overview',
+    badge: '敬请期待',
   },
 ];
 
