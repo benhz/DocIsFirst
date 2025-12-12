@@ -473,4 +473,4 @@ git checkout -b recovered-branch <commit-hash>
 
 ---
 
-还有其他问题？查看我们的[完整文档](../overview.md)或[联系支持团队](#获取帮助)。
+还有其他问题？查看我们的[完整文档](./overview)或[联系支持团队](#获取帮助)。
