@@ -1,0 +1,137 @@
+.showcase {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  width: 100%;
+  background: linear-gradient(180deg, transparent 0%, var(--ifm-color-emphasis-100) 100%);
+}
+
+.productCard {
+  height: 100%;
+  background: var(--ifm-card-background-color, white);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--ifm-color-primary-light);
+}
+
+.productHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.productIcon {
+  font-size: 3rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.productTitleWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.productTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.productBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.productDescription {
+  margin-bottom: 1.25rem;
+  min-height: 3rem;
+}
+
+.productDescription p {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.productFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.featureTag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-800);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.productCard:hover .featureTag {
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-dark);
+}
+
+.productFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.productLink {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.productLink:hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: none;
+  transform: translateX(4px);
+}
+
+@media screen and (max-width: 996px) {
+  .productCard {
+    padding: 1.5rem;
+  }
+
+  .productIcon {
+    font-size: 2.5rem;
+  }
+
+  .productTitle {
+    font-size: 1.3rem;
+  }
+}
