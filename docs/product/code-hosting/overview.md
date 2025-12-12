@@ -8,6 +8,50 @@ sidebar_position: 1
 
 代码托管平台是一个企业级的代码版本管理与协作平台，基于 Git 技术构建，为开发团队提供安全、高效的代码托管服务。平台不仅支持代码的版本控制，还提供完整的团队协作、代码评审、CI/CD 集成等功能，帮助企业构建现代化的软件开发工作流。
 
+## 🎯 产品预览
+
+### 在线演示
+
+:::tip 立即体验
+👉 [访问演示环境](https://demo.code-hosting.platform.com) - 无需注册，即刻体验完整功能
+
+**演示账号：** demo@example.com
+**演示密码：** Demo123456
+:::
+
+### 核心功能展示
+
+#### 1. 代码仓库管理
+![代码仓库管理界面](https://via.placeholder.com/800x450/4A90E2/FFFFFF?text=Repository+Management)
+*清晰的仓库组织结构，支持公开/私有仓库管理*
+
+#### 2. 代码评审界面
+![代码评审界面](https://via.placeholder.com/800x450/7CB342/FFFFFF?text=Code+Review)
+*强大的代码评审功能，支持行级评论和变更追踪*
+
+#### 3. CI/CD 集成
+![CI/CD集成界面](https://via.placeholder.com/800x450/FB8C00/FFFFFF?text=CI%2FCD+Integration)
+*无缝集成主流 CI/CD 工具，自动化构建和部署*
+
+#### 4. 数据统计看板
+![数据统计看板](https://via.placeholder.com/800x450/8E24AA/FFFFFF?text=Analytics+Dashboard)
+*全面的数据分析，洞察团队协作效率*
+
+### 视频演示
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="代码托管平台产品演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### 快速导航
+
+<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', margin: '1.5rem 0'}}>
+  <a href="#快速开始" style={{padding: '0.75rem 1.5rem', background: '#4A90E2', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>🚀 快速开始</a>
+  <a href="./features" style={{padding: '0.75rem 1.5rem', background: '#7CB342', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>⚙️ 功能详解</a>
+  <a href="./user-guide" style={{padding: '0.75rem 1.5rem', background: '#FB8C00', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>📘 使用手册</a>
+  <a href="./faq" style={{padding: '0.75rem 1.5rem', background: '#8E24AA', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>❓ 常见问题</a>
+</div>
+
+---
+
 ## 核心价值
 
 ### 🔒 安全可靠

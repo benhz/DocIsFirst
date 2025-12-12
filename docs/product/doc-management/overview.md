@@ -8,6 +8,67 @@ sidebar_position: 1
 
 文档管理平台是一个企业级的文档管理与协作平台，提供文档的集中存储、版本控制、协作编辑和知识沉淀能力。帮助团队高效管理文档资产,促进知识共享与传承。
 
+## 🎯 产品预览
+
+### 在线演示
+
+:::tip 立即体验
+👉 [访问演示环境](https://demo.doc-management.platform.com) - 体验企业级文档协作
+
+**演示账号：** demo@example.com
+**演示密码：** Demo123456
+:::
+
+### 核心功能展示
+
+#### 1. 文档编辑器
+![文档编辑器](https://via.placeholder.com/800x450/667EEA/FFFFFF?text=Document+Editor)
+*强大的富文本编辑器，支持 Markdown 和所见即所得编辑*
+
+#### 2. 实时协作
+![实时协作](https://via.placeholder.com/800x450/764BA2/FFFFFF?text=Real-time+Collaboration)
+*多人同时编辑，实时同步，光标位置可见*
+
+#### 3. 版本历史
+![版本历史](https://via.placeholder.com/800x450/F093FB/FFFFFF?text=Version+History)
+*完整的版本历史记录，支持版本对比和回滚*
+
+#### 4. 知识库组织
+![知识库组织](https://via.placeholder.com/800x450/4FACFE/FFFFFF?text=Knowledge+Organization)
+*清晰的目录结构，支持标签分类和全文搜索*
+
+#### 5. 评论与讨论
+![评论讨论](https://via.placeholder.com/800x450/00F2FE/FFFFFF?text=Comments+Discussion)
+*行内评论和讨论区，促进团队沟通*
+
+### 功能亮点
+
+<div style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white', padding: '2rem', borderRadius: '12px', margin: '1.5rem 0'}}>
+  <h4 style={{color: 'white', marginTop: 0}}>✨ 为什么选择我们的文档管理平台？</h4>
+  <ul style={{fontSize: '1.05rem', lineHeight: '1.8'}}>
+    <li><strong>极致的编辑体验</strong> - 所见即所得 + Markdown 双模式</li>
+    <li><strong>真正的实时协作</strong> - 毫秒级同步，就像 Google Docs</li>
+    <li><strong>强大的版本控制</strong> - 每次修改都有记录，永不丢失</li>
+    <li><strong>智能搜索</strong> - 全文搜索 + AI 智能推荐</li>
+    <li><strong>企业级安全</strong> - 细粒度权限 + 审计日志 + 数据加密</li>
+  </ul>
+</div>
+
+### 视频演示
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="文档管理平台产品演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### 快速导航
+
+<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', margin: '1.5rem 0'}}>
+  <a href="#快速开始" style={{padding: '0.75rem 1.5rem', background: '#667EEA', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>🚀 快速开始</a>
+  <a href="./features" style={{padding: '0.75rem 1.5rem', background: '#764BA2', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>⚙️ 功能详解</a>
+  <a href="./user-guide" style={{padding: '0.75rem 1.5rem', background: '#F093FB', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>📘 使用手册</a>
+  <a href="./faq" style={{padding: '0.75rem 1.5rem', background: '#4FACFE', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '600'}}>❓ 常见问题</a>
+</div>
+
+---
+
 ## 核心价值
 
 ### 📁 集中管理
