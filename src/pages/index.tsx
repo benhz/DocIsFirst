@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import ProductShowcase from '@site/src/components/ProductShowcase';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
@@ -37,6 +38,7 @@ export default function Home(): ReactNode {
       description="探索技术的无限可能，分享知识与经验">
       <HomepageHeader />
       <main>
+        <ProductShowcase />
         <HomepageFeatures />
       </main>
     </Layout>
