@@ -18,8 +18,12 @@
 
 .productCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  border-color: var(--ifm-color-primary-light);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--ifm-color-primary-lighter);
+  background: linear-gradient(135deg,
+    var(--ifm-card-background-color) 0%,
+    rgba(var(--ifm-color-primary-rgb, 37, 194, 160), 0.02) 100%
+  );
 }
 
 .productHeader {
@@ -91,12 +95,14 @@
   font-size: 0.85rem;
   font-weight: 500;
   border-radius: 6px;
+  border: 1px solid transparent;
   transition: all 0.2s ease;
 }
 
 .productCard:hover .featureTag {
-  background: var(--ifm-color-primary-lightest);
-  color: var(--ifm-color-primary-dark);
+  background: rgba(var(--ifm-color-primary-rgb, 37, 194, 160), 0.08);
+  color: var(--ifm-color-primary-darker);
+  border: 1px solid rgba(var(--ifm-color-primary-rgb, 37, 194, 160), 0.15);
 }
 
 .productFooter {
