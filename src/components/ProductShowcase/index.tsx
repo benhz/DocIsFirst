@@ -16,14 +16,14 @@ type ProductItem = {
 const ProductList: ProductItem[] = [
   {
     title: '代码托管平台',
-    icon: '☁️',
+    icon: '💻',
     description: (
       <>
-        基于 Kubernetes 的企业级云原生应用平台，提供容器编排、微服务治理和自动化运维能力。
+        企业级代码托管与协作平台，提供安全可靠的代码版本管理、团队协作和DevOps工具链集成能力。
       </>
     ),
-    features: ['容器编排', '服务网格', '自动扩缩容', 'CI/CD'],
-    link: '/docs/product/product-a/overview',
+    features: ['Git仓库管理', '代码评审', '分支保护', 'CI/CD集成'],
+    link: '/docs/product/code-hosting/overview',
     badge: '热门',
   },
   {
@@ -31,34 +31,36 @@ const ProductList: ProductItem[] = [
     icon: '📊',
     description: (
       <>
-        强大的大数据处理和分析平台，支持实时数据处理、数据仓库和可视化分析。
+        智能数据分析与BI平台，通过AI技术让数据分析更简单，支持自然语言查询和智能可视化分析。
       </>
     ),
-    features: ['实时计算', '数据仓库', 'BI看板', '机器学习' ],
-    link: '/docs/product/',
+    features: ['智能问答', '数据可视化', '实时分析', '智能报表'],
+    link: '/docs/product/smart-data/overview',
+    badge: '敬请期待',
   },
   {
     title: '智联知识库智能体开发平台',
-    icon: '🚪',
+    icon: '🤖',
     description: (
       <>
-        高性能、可扩展的 API 网关，提供流量控制、安全认证和服务路由等核心功能。
+        一站式知识库管理与AI智能体开发平台，帮助企业构建智能知识体系，快速开发定制化AI助手。
       </>
     ),
-    features: ['流量控制', '安全认证', '服务路由', '监控告警'],
-    link: '/docs/product/',
+    features: ['知识库构建', '智能体开发', '向量检索', 'RAG应用'],
+    link: '/docs/product/knowledge-agent/overview',
     badge: '新品',
   },
   {
     title: '文档管理平台',
-    icon: '📈',
+    icon: '📚',
     description: (
       <>
-        全方位的系统监控和智能告警平台，帮助团队快速发现和定位问题。
+        企业级文档管理与协作平台，支持多格式文档存储、版本控制和团队协作编辑，让知识沉淀更高效。
       </>
     ),
-    features: ['指标监控', '日志分析', '链路追踪', '智能告警'],
-    link: '/docs/product/',
+    features: ['文档协作', '版本管理', '权限控制', '全文检索'],
+    link: '/docs/product/doc-management/overview',
+    badge: '敬请期待',
   },
 ];
 

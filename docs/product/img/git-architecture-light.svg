@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400">
+  <defs>
+    <linearGradient id="git-arch-layer1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="git-arch-layer2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="git-arch-layer3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color:#14b8a6"/>
+    </linearGradient>
+    <filter id="git-arch-shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- 第一层 -->
+  <g filter="url(#git-arch-shadow)">
+    <rect x="20" y="20" width="680" height="100" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <rect x="20" y="20" width="680" height="6" rx="3" fill="url(#git-arch-layer1)"/>
+    <text x="40" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0c4a6e">Web 前端与开放接口</text>
+    
+    <g>
+      <rect x="40" y="65" width="150" height="40" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="115" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#0369a1">仓库管理</text>
+    </g>
+    <g>
+      <rect x="200" y="65" width="150" height="40" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="275" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#0369a1">代码评审</text>
+    </g>
+    <g>
+      <rect x="360" y="65" width="150" height="40" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="435" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#0369a1">CI/CD 状态</text>
+    </g>
+    <g>
+      <rect x="520" y="65" width="150" height="40" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="595" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#0369a1">权限与审计</text>
+    </g>
+  </g>
+
+  <!-- 箭头1 -->
+  <path d="M360 125 L360 145 M354 140 L360 148 L366 140" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 第二层 -->
+  <g filter="url(#git-arch-shadow)">
+    <rect x="20" y="150" width="680" height="100" rx="8" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+    <rect x="20" y="150" width="680" height="6" rx="3" fill="url(#git-arch-layer2)"/>
+    <text x="40" y="180" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#581c87">Git 核心服务层</text>
+    
+    <g>
+      <rect x="40" y="195" width="150" height="40" rx="6" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1"/>
+      <text x="115" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#7c3aed">版本控制</text>
+    </g>
+    <g>
+      <rect x="200" y="195" width="150" height="40" rx="6" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1"/>
+      <text x="275" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#7c3aed">分支管理</text>
+    </g>
+    <g>
+      <rect x="360" y="195" width="150" height="40" rx="6" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1"/>
+      <text x="435" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#7c3aed">合并策略</text>
+    </g>
+    <g>
+      <rect x="520" y="195" width="150" height="40" rx="6" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1"/>
+      <text x="595" y="220" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#7c3aed">Hook 机制</text>
+    </g>
+  </g>
+
+  <!-- 箭头2 -->
+  <path d="M360 255 L360 275 M354 270 L360 278 L366 270" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 第三层 -->
+  <g filter="url(#git-arch-shadow)">
+    <rect x="20" y="280" width="680" height="100" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+    <rect x="20" y="280" width="680" height="6" rx="3" fill="url(#git-arch-layer3)"/>
+    <text x="40" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#14532d">存储与安全层</text>
+    
+    <g>
+      <rect x="40" y="325" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+      <text x="115" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#047857">对象存储</text>
+    </g>
+    <g>
+      <rect x="200" y="325" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+      <text x="275" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#047857">数据加密</text>
+    </g>
+    <g>
+      <rect x="360" y="325" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+      <text x="435" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#047857">备份恢复</text>
+    </g>
+    <g>
+      <rect x="520" y="325" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1"/>
+      <text x="595" y="350" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#047857">审计日志</text>
+    </g>
+  </g>
+</svg>

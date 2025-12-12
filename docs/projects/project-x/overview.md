@@ -14,7 +14,7 @@ Project X 是核心业务系统，提供 XXX 功能。
 
 ## 关联产品
 
-- [产品 A](../../product/product-a/overview.md)
+- [代码托管平台](../../product/code-hosting/overview)
 
 ## 核心功能
 
