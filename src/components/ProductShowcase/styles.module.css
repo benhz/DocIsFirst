@@ -131,7 +131,7 @@
 
 .systemLink {
   color: white;
-  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: 600;
@@ -141,14 +141,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  box-shadow: 0 2px 8px rgba(var(--ifm-color-primary-rgb, 37, 194, 160), 0.25);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
 }
 
 .systemLink:hover {
   color: white;
   text-decoration: none;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--ifm-color-primary-rgb, 37, 194, 160), 0.35);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
 }
 
 .systemLinkDisabled {
