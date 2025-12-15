@@ -11,6 +11,8 @@ type ProductItem = {
   features: string[];
   link: string;
   badge?: string;
+  systemUrl?: string; // 产品系统首页URL
+  isUnderConstruction?: boolean; // 是否建设中
 };
 
 const ProductList: ProductItem[] = [
@@ -25,6 +27,7 @@ const ProductList: ProductItem[] = [
     features: ['Git仓库管理', '代码评审', '分支保护', 'CI/CD集成'],
     link: '/docs/product/code-hosting/overview',
     badge: '热门',
+    systemUrl: 'https://git.example.com', // 请替换为实际的系统URL
   },
   {
     title: '智慧问数平台',
@@ -37,6 +40,7 @@ const ProductList: ProductItem[] = [
     features: ['智能问答', '数据可视化', '实时分析', '智能报表'],
     link: '/docs/product/smart-data/overview',
     badge: '敬请期待',
+    isUnderConstruction: true,
   },
   {
     title: '智联知识库智能体开发平台',
@@ -49,6 +53,7 @@ const ProductList: ProductItem[] = [
     features: ['知识库构建', '智能体开发', '向量检索', 'RAG应用'],
     link: '/docs/product/knowledge-agent/overview',
     badge: '新品',
+    systemUrl: 'https://agent.example.com', // 请替换为实际的系统URL
   },
   {
     title: '文档管理平台',
@@ -61,10 +66,11 @@ const ProductList: ProductItem[] = [
     features: ['文档协作', '版本管理', '权限控制', '全文检索'],
     link: '/docs/product/doc-management/overview',
     badge: '敬请期待',
+    isUnderConstruction: true,
   },
 ];
 
-function Product({title, icon, description, features, link, badge}: ProductItem) {
+function Product({title, icon, description, features, link, badge, systemUrl, isUnderConstruction}: ProductItem) {
   return (
     <div className={clsx('col col--6')} style={{marginBottom: '2rem'}}>
       <div className={styles.productCard}>
@@ -89,6 +95,15 @@ function Product({title, icon, description, features, link, badge}: ProductItem)
           <Link to={link} className={styles.productLink}>
             了解更多 →
           </Link>
+          {isUnderConstruction ? (
+            <span className={styles.systemLinkDisabled}>
+              建设中 🚧
+            </span>
+          ) : systemUrl ? (
+            <a href={systemUrl} target="_blank" rel="noopener noreferrer" className={styles.systemLink}>
+              进入系统 🚀
+            </a>
+          ) : null}
         </div>
       </div>
     </div>
