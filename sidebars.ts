@@ -18,6 +18,7 @@ const sidebars: SidebarsConfig = {
         'product/code-hosting/features',
         'product/code-hosting/user-guide',
         'product/code-hosting/faq',
+        'product/code-hosting/git-commands',
       ],
     },
     {
