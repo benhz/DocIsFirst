@@ -24,6 +24,11 @@ function HomepageHeader() {
             to="/docs/intro">
             开始使用 - 5分钟快速入门 ⏱️
           </Link>
+          <Link
+            className="button button--primary button--lg"
+            to="/docs/product">
+            产品中心 🚀
+          </Link>
         </div>
       </div>
     </header>
