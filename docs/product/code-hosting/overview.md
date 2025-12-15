@@ -79,4 +79,4 @@ sidebar_position: 1
 
 ## 产品架构
 
-![产品架构图](../img/git-architecture-light.svg)
+![产品架构图](/img/git-architecture-light.svg)
