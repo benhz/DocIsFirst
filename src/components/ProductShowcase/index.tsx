@@ -27,7 +27,7 @@ const ProductList: ProductItem[] = [
     features: ['Git仓库管理', '代码评审', '分支保护', 'CI/CD集成'],
     link: '/docs/product/code-hosting/overview',
     badge: '热门',
-    systemUrl: 'https://git.example.com', // 请替换为实际的系统URL
+    systemUrl: 'http://116.178.69.6:30590', // 请替换为实际的系统URL
   },
   {
     title: '智慧问数平台',
@@ -53,7 +53,7 @@ const ProductList: ProductItem[] = [
     features: ['知识库构建', '智能体开发', '向量检索', 'RAG应用'],
     link: '/docs/product/knowledge-agent/overview',
     badge: '新品',
-    systemUrl: 'https://agent.example.com', // 请替换为实际的系统URL
+    systemUrl: 'http://116.178.69.6:30300/', // 请替换为实际的系统URL
   },
   {
     title: '文档管理平台',
