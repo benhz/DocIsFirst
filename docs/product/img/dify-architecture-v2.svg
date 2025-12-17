@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 950" font-family="'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif">
+  <defs>
+    <!-- Gradients for left borders -->
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+    
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#7c3aed"/>
+    </linearGradient>
+    
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    
+    <linearGradient id="grad6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    
+    <linearGradient id="grad7" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#db2777"/>
+    </linearGradient>
+    
+    <linearGradient id="grad8" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#4f46e5"/>
+    </linearGradient>
+    
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0ea5e9"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+    
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="950" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="40" y="50" fill="url(#titleGrad)" font-size="28" font-weight="700">Dify 平台架构</text>
+  
+  <!-- Layer 1: 应用层 - 多端访问 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="80" width="720" height="85" rx="12" fill="#fff"/>
+    <rect x="40" y="80" width="6" height="85" rx="3" fill="url(#grad1)"/>
+    <text x="65" y="110" fill="#0891b2" font-size="15" font-weight="600">应用层 - 多端访问</text>
+    <g>
+      <rect x="65" y="125" width="150" height="28" rx="14" fill="#ecfeff" stroke="#cffafe" stroke-width="1"/>
+      <text x="140" y="144" text-anchor="middle" fill="#0e7490" font-size="13">Web Portal</text>
+      
+      <rect x="230" y="125" width="150" height="28" rx="14" fill="#ecfeff" stroke="#cffafe" stroke-width="1"/>
+      <text x="305" y="144" text-anchor="middle" fill="#0e7490" font-size="13">Mobile App</text>
+      
+      <rect x="395" y="125" width="150" height="28" rx="14" fill="#ecfeff" stroke="#cffafe" stroke-width="1"/>
+      <text x="470" y="144" text-anchor="middle" fill="#0e7490" font-size="13">API / SDK</text>
+      
+      <rect x="560" y="125" width="150" height="28" rx="14" fill="#ecfeff" stroke="#cffafe" stroke-width="1"/>
+      <text x="635" y="144" text-anchor="middle" fill="#0e7490" font-size="13">第三方集成</text>
+    </g>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <path d="M400 170 L400 185 L395 180 M400 185 L405 180" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 2: 前端界面 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="195" width="720" height="85" rx="12" fill="#fff"/>
+    <rect x="40" y="195" width="6" height="85" rx="3" fill="url(#grad2)"/>
+    <text x="65" y="225" fill="#7c3aed" font-size="15" font-weight="600">前端界面 - 可视化开发体验</text>
+    <g>
+      <rect x="65" y="240" width="150" height="28" rx="14" fill="#faf5ff" stroke="#f3e8ff" stroke-width="1"/>
+      <text x="140" y="259" text-anchor="middle" fill="#7c3aed" font-size="13">工作流画布</text>
+      
+      <rect x="230" y="240" width="150" height="28" rx="14" fill="#faf5ff" stroke="#f3e8ff" stroke-width="1"/>
+      <text x="305" y="259" text-anchor="middle" fill="#7c3aed" font-size="13">Prompt 编辑器</text>
+      
+      <rect x="395" y="240" width="150" height="28" rx="14" fill="#faf5ff" stroke="#f3e8ff" stroke-width="1"/>
+      <text x="470" y="259" text-anchor="middle" fill="#7c3aed" font-size="13">知识库管理</text>
+      
+      <rect x="560" y="240" width="150" height="28" rx="14" fill="#faf5ff" stroke="#f3e8ff" stroke-width="1"/>
+      <text x="635" y="259" text-anchor="middle" fill="#7c3aed" font-size="13">监控看板</text>
+    </g>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <path d="M400 285 L400 300 L395 295 M400 300 L405 295" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 3: Dify 应用引擎 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="310" width="720" height="85" rx="12" fill="#fff"/>
+    <rect x="40" y="310" width="6" height="85" rx="3" fill="url(#grad3)"/>
+    <text x="65" y="340" fill="#2563eb" font-size="15" font-weight="600">应用层 - Dify 应用引擎</text>
+    <g>
+      <rect x="65" y="355" width="130" height="28" rx="14" fill="#eff6ff" stroke="#dbeafe" stroke-width="1"/>
+      <text x="130" y="374" text-anchor="middle" fill="#2563eb" font-size="13">Chatbot</text>
+      
+      <rect x="210" y="355" width="130" height="28" rx="14" fill="#eff6ff" stroke="#dbeafe" stroke-width="1"/>
+      <text x="275" y="374" text-anchor="middle" fill="#2563eb" font-size="13">Agent</text>
+      
+      <rect x="355" y="355" width="130" height="28" rx="14" fill="#eff6ff" stroke="#dbeafe" stroke-width="1"/>
+      <text x="420" y="374" text-anchor="middle" fill="#2563eb" font-size="13">Workflow</text>
+      
+      <rect x="500" y="355" width="210" height="28" rx="14" fill="#eff6ff" stroke="#dbeafe" stroke-width="1"/>
+      <text x="605" y="374" text-anchor="middle" fill="#2563eb" font-size="13">Completion (文本生成)</text>
+    </g>
+  </g>
+  
+  <!-- Arrow 3 -->
+  <path d="M400 400 L400 415 L395 410 M400 415 L405 410" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 4: 核心能力层 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="425" width="720" height="120" rx="12" fill="#fff"/>
+    <rect x="40" y="425" width="6" height="120" rx="3" fill="url(#grad4)"/>
+    <text x="65" y="455" fill="#059669" font-size="15" font-weight="600">核心能力层</text>
+    <g>
+      <rect x="65" y="470" width="125" height="60" rx="10" fill="#ecfdf5" stroke="#d1fae5" stroke-width="1"/>
+      <text x="127" y="495" text-anchor="middle" fill="#059669" font-size="13" font-weight="500">LLM 编排</text>
+      <text x="127" y="515" text-anchor="middle" fill="#10b981" font-size="10">Prompt · Few-Shot</text>
+      
+      <rect x="205" y="470" width="125" height="60" rx="10" fill="#ecfdf5" stroke="#d1fae5" stroke-width="1"/>
+      <text x="267" y="495" text-anchor="middle" fill="#059669" font-size="13" font-weight="500">RAG 引擎</text>
+      <text x="267" y="515" text-anchor="middle" fill="#10b981" font-size="10">混合检索 · 重排序</text>
+      
+      <rect x="345" y="470" width="125" height="60" rx="10" fill="#ecfdf5" stroke="#d1fae5" stroke-width="1"/>
+      <text x="407" y="495" text-anchor="middle" fill="#059669" font-size="13" font-weight="500">Agent 框架</text>
+      <text x="407" y="515" text-anchor="middle" fill="#10b981" font-size="10">Function · ReAct</text>
+      
+      <rect x="485" y="470" width="125" height="60" rx="10" fill="#ecfdf5" stroke="#d1fae5" stroke-width="1"/>
+      <text x="547" y="495" text-anchor="middle" fill="#059669" font-size="13" font-weight="500">工具调用</text>
+      <text x="547" y="515" text-anchor="middle" fill="#10b981" font-size="10">90+ 工具 · API</text>
+      
+      <rect x="625" y="470" width="120" height="60" rx="10" fill="#ecfdf5" stroke="#d1fae5" stroke-width="1"/>
+      <text x="685" y="495" text-anchor="middle" fill="#059669" font-size="13" font-weight="500">变量管理</text>
+      <text x="685" y="515" text-anchor="middle" fill="#10b981" font-size="10">上下文 · 记忆</text>
+    </g>
+  </g>
+  
+  <!-- Arrow 4 -->
+  <path d="M400 550 L400 565 L395 560 M400 565 L405 560" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 5: 模型抽象层 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="575" width="720" height="85" rx="12" fill="#fff"/>
+    <rect x="40" y="575" width="6" height="85" rx="3" fill="url(#grad5)"/>
+    <text x="65" y="605" fill="#d97706" font-size="15" font-weight="600">模型抽象层</text>
+    <g>
+      <rect x="65" y="620" width="150" height="28" rx="14" fill="#fffbeb" stroke="#fef3c7" stroke-width="1"/>
+      <text x="140" y="639" text-anchor="middle" fill="#d97706" font-size="13">模型适配器</text>
+      
+      <rect x="230" y="620" width="150" height="28" rx="14" fill="#fffbeb" stroke="#fef3c7" stroke-width="1"/>
+      <text x="305" y="639" text-anchor="middle" fill="#d97706" font-size="13">Token 计数</text>
+      
+      <rect x="395" y="620" width="150" height="28" rx="14" fill="#fffbeb" stroke="#fef3c7" stroke-width="1"/>
+      <text x="470" y="639" text-anchor="middle" fill="#d97706" font-size="13">流式输出</text>
+      
+      <rect x="560" y="620" width="150" height="28" rx="14" fill="#fffbeb" stroke="#fef3c7" stroke-width="1"/>
+      <text x="635" y="639" text-anchor="middle" fill="#d97706" font-size="13">错误重试</text>
+    </g>
+  </g>
+  
+  <!-- Arrow 5 -->
+  <path d="M400 665 L400 680 L395 675 M400 680 L405 675" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 6: LLM Provider 层 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="690" width="720" height="85" rx="12" fill="#fff"/>
+    <rect x="40" y="690" width="6" height="85" rx="3" fill="url(#grad6)"/>
+    <text x="65" y="720" fill="#dc2626" font-size="15" font-weight="600">LLM Provider 层</text>
+    <g>
+      <rect x="65" y="735" width="85" height="28" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+      <text x="107" y="754" text-anchor="middle" fill="#dc2626" font-size="12">OpenAI</text>
+      
+      <rect x="160" y="735" width="85" height="28" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+      <text x="202" y="754" text-anchor="middle" fill="#dc2626" font-size="12">Claude</text>
+      
+      <rect x="255" y="735" width="85" height="28" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+      <text x="297" y="754" text-anchor="middle" fill="#dc2626" font-size="12">Llama</text>
+      
+      <rect x="350" y="735" width="85" height="28" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+      <text x="392" y="754" text-anchor="middle" fill="#dc2626" font-size="12">通义千问</text>
+      
+      <rect x="445" y="735" width="85" height="28" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+      <text x="487" y="754" text-anchor="middle" fill="#dc2626" font-size="12">文心</text>
+      
+      <rect x="540" y="735" width="85" height="28" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+      <text x="582" y="754" text-anchor="middle" fill="#dc2626" font-size="12">GLM</text>
+      
+      <rect x="635" y="735" width="105" height="28" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="1"/>
+      <text x="687" y="754" text-anchor="middle" fill="#dc2626" font-size="12">自定义模型</text>
+    </g>
+  </g>
+  
+  <!-- Arrow 6 -->
+  <path d="M400 780 L400 795 L395 790 M400 795 L405 790" stroke="#94a3b8" stroke-width="2" fill="none"/>
+  
+  <!-- Layer 7: 数据存储层 -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="805" width="350" height="115" rx="12" fill="#fff"/>
+    <rect x="40" y="805" width="6" height="115" rx="3" fill="url(#grad7)"/>
+    <text x="65" y="835" fill="#db2777" font-size="15" font-weight="600">数据存储层</text>
+    <g>
+      <rect x="65" y="850" width="145" height="55" rx="10" fill="#fdf2f8" stroke="#fce7f3" stroke-width="1"/>
+      <text x="137" y="873" text-anchor="middle" fill="#db2777" font-size="12" font-weight="500">向量数据库</text>
+      <text x="137" y="892" text-anchor="middle" fill="#ec4899" font-size="10">Qdrant · Weaviate</text>
+      
+      <rect x="225" y="850" width="145" height="55" rx="10" fill="#fdf2f8" stroke="#fce7f3" stroke-width="1"/>
+      <text x="297" y="873" text-anchor="middle" fill="#db2777" font-size="12" font-weight="500">关系数据库</text>
+      <text x="297" y="892" text-anchor="middle" fill="#ec4899" font-size="10">PostgreSQL</text>
+    </g>
+  </g>
+  
+  <g filter="url(#shadow)">
+    <rect x="410" y="805" width="350" height="115" rx="12" fill="#fff"/>
+    <rect x="410" y="805" width="6" height="115" rx="3" fill="url(#grad8)"/>
+    <text x="435" y="835" fill="#4f46e5" font-size="15" font-weight="600">基础设施层</text>
+    <g>
+      <rect x="435" y="850" width="145" height="55" rx="10" fill="#eef2ff" stroke="#e0e7ff" stroke-width="1"/>
+      <text x="507" y="873" text-anchor="middle" fill="#4f46e5" font-size="12" font-weight="500">容器编排</text>
+      <text x="507" y="892" text-anchor="middle" fill="#6366f1" font-size="10">Docker · K8s</text>
+      
+      <rect x="595" y="850" width="145" height="55" rx="10" fill="#eef2ff" stroke="#e0e7ff" stroke-width="1"/>
+      <text x="667" y="873" text-anchor="middle" fill="#4f46e5" font-size="12" font-weight="500">运维监控</text>
+      <text x="667" y="892" text-anchor="middle" fill="#6366f1" font-size="10">日志 · 告警 · 备份</text>
+    </g>
+  </g>
+</svg>

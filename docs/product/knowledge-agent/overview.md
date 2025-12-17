@@ -38,16 +38,12 @@ sidebar_position: 1
 *拖拽式智能体开发，零代码快速构建 AI 助手*
 
 #### 3. 对话流程设计器
-![对话流程设计](https://via.placeholder.com/800x450/95E1D3/FFFFFF?text=Dialogue+Flow+Designer)
+![对话流程设计](../../../static/img/product/zhilian/chathelper.png)
 *可视化对话流程编排，轻松实现复杂对话逻辑*
 
 #### 4. RAG 检索效果展示
-![RAG检索展示](https://via.placeholder.com/800x450/F38181/FFFFFF?text=RAG+Search+Results)
+![RAG检索展示](../../../static/img/product/zhilian/retrieve.png)
 *精准的语义检索和智能问答，提升用户体验*
-
-#### 5. 多渠道部署
-![多渠道部署](https://via.placeholder.com/800x450/AA96DA/FFFFFF?text=Multi-Channel+Deployment)
-*一键部署到网页、移动端、企业微信等多个渠道*
 
 ### 互动演示
 
@@ -63,7 +59,7 @@ sidebar_position: 1
     <li>点击"创建"即可完成</li>
   </ol>
   <p style={{marginTop: '1rem', fontSize: '0.9rem', color: '#666'}}>
-    👉 <a href="https://demo.knowledge-agent.platform.com/chat" target="_blank">点击这里</a> 开始完整对话体验
+    👉 <a href="http://116.178.69.6:30300/datasets" target="_blank">点击这里</a> 开始完整对话体验
   </p>
 </div>
 
@@ -86,7 +82,7 @@ sidebar_position: 1
 
 ### 🎨 可视化 AI 工作流编排（源自 Dify）
 - **拖拽式画布设计**：无需编码，通过可视化界面构建复杂 AI 应用
-- **丰富节点类型**：LLM 调用、知识库检索、代码执行、HTTP 请求、条件判断、循环等 90+ 内置节点
+- **丰富节点类型**：LLM 调用、知识库检索、代码执行、HTTP 请求、条件判断、循环等 90+ 内置节点 
 - **流程调试**：实时查看每个节点的执行结果，快速定位问题
 - **工作流模板**：提供客服、内容生成、数据分析等场景的预置工作流
 
@@ -131,41 +127,7 @@ sidebar_position: 1
 
 ## 产品架构（基于 Dify 技术栈）
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                  应用层 - 多端访问                          │
-│   Web Portal │ Mobile App │ API/SDK │ 第三方集成          │
-├─────────────────────────────────────────────────────────────┤
-│              前端界面 - 可视化开发体验                       │
-│  工作流画布 │ Prompt 编辑器 │ 知识库管理 │ 监控看板       │
-├─────────────────────────────────────────────────────────────┤
-│                 应用层 - Dify 应用引擎                      │
-│  Chatbot │ Agent │ Workflow │ Completion (文本生成)      │
-├─────────────────────────────────────────────────────────────┤
-│                   核心能力层                                │
-│ ┌──────────┬──────────┬──────────┬──────────┬─────────┐  │
-│ │LLM 编排  │RAG 引擎  │Agent框架 │工具调用  │变量管理 │  │
-│ │Prompt    │混合检索  │Function  │90+工具   │上下文   │  │
-│ │Few-Shot  │重排序    │ReAct     │自定义API │会话记忆 │  │
-│ └──────────┴──────────┴──────────┴──────────┴─────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│                   模型抽象层                                │
-│  模型适配器 │ Token 计数 │ 流式输出 │ 错误重试           │
-├─────────────────────────────────────────────────────────────┤
-│                LLM Provider 层                              │
-│ OpenAI│Claude│Llama│通义千问│文心│GLM│自定义模型          │
-├─────────────────────────────────────────────────────────────┤
-│                 数据存储层                                  │
-│ ┌──────────┬──────────┬──────────┬──────────┬─────────┐  │
-│ │向量数据库│关系数据库│对象存储  │缓存      │消息队列 │  │
-│ │Qdrant/   │PostgreSQL│S3/MinIO  │Redis     │Celery   │  │
-│ │Weaviate  │          │          │          │         │  │
-│ └──────────┴──────────┴──────────┴──────────┴─────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│              基础设施层                                     │
-│  Docker/K8s │ 监控告警 │ 日志收集 │ 备份恢复              │
-└─────────────────────────────────────────────────────────────┘
-```
+![产品架构图](../img/dify-architecture-v2.svg)
 
 ### 架构特点
 
@@ -336,10 +298,11 @@ POST /v1/messages/:id/feedbacks
 ### 模型支持（继承 Dify 生态）
 
 #### 商业模型
-- **OpenAI**：GPT-4 Turbo、GPT-4、GPT-3.5 Turbo
-- **Anthropic**：Claude 3.5 Sonnet、Claude 3 Opus/Sonnet/Haiku
+- **OpenAI**：GPT-4 Turbo、GPT-4、GPT-3.5 Turbo、GPT-5
+- **Anthropic**：Claude 3.5 Sonnet、Claude 4.5 Opus/Sonnet
 - **Google**：Gemini Pro、Gemini Ultra
-- **Cohere**：Command、Command Light
+- **Qwen**：Qwen3-Max、Qwen3-A235B-A22B
+- **Deepseek**: R1、V3
 
 #### 国产大模型
 - **阿里云**：通义千问 Turbo、Plus、Max
@@ -354,6 +317,7 @@ POST /v1/messages/:id/feedbacks
 - **Mistral**：Mistral 7B、Mixtral 8x7B
 - **01.AI**：Yi-34B
 - **Qwen**：Qwen-72B
+- **DeepSeek**: DeepSeek-R、Deepseek-V
 
 #### 私有化部署
 - 支持任何兼容 OpenAI API 的模型
