@@ -65,7 +65,16 @@ sidebar_position: 1
 
 ### 视频教程
 
-<iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="智能体开发平台产品演示" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '3rem 2rem', borderRadius: '12px', textAlign: 'center', color: 'white', margin: '1.5rem 0'}}>
+  <div style={{fontSize: '3rem', marginBottom: '1rem'}}>🎬</div>
+  <h3 style={{color: 'white', marginBottom: '1rem'}}>视频教程即将上线</h3>
+  <p style={{fontSize: '1.1rem', opacity: 0.9, marginBottom: '1.5rem'}}>
+    我们正在精心制作产品演示视频，敬请期待
+  </p>
+  <div style={{fontSize: '0.9rem', opacity: 0.8}}>
+    📹 内容包括：平台介绍、功能演示、快速上手指南等
+  </div>
+</div>
 
 ### 快速导航
 
